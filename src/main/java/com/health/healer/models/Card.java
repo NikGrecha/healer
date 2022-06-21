@@ -10,7 +10,6 @@ import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name="card")
 public class Card { //Проверка гита #3
