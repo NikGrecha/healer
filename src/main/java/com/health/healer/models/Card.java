@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name="card")
-public class Card {
+public class Card { //Проверка гита
     @Id
     @Column(name="id")
     private int id;
