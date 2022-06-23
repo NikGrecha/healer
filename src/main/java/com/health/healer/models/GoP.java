@@ -9,7 +9,7 @@ import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+//@Data
 @Entity
 @Table(name="go_p")
 
