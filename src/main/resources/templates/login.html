@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/authorization.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaldi&family=Mina&display=swap" rel="stylesheet">    <title>One way</title>
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <div class="header-navigate">
+            <div class="nav-image">
+                <a href="home.html">
+                    <img src="image/home/logo.png" alt="" width="100px" height="60px">
+                </a>
+            </div>
+            <nav class="navigate">
+                <ul>
+                    <li>
+                        <a href="/catalog/">Каталог турів</a>
+                    </li>
+                    <li>
+                        <a href="/promotions/">Акції</a>
+                    </li>
+                    <li>
+                        <a href="/auth/login/">Вхід</a>
+                    </li>
+                </ul>        
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="log-form-conteiner">
+            <form action="/login/authorization" method="post">
+                <p>Увійти</p>
+                <p>Логін</p>
+                <input type="text" name="name">
+                <p>Пароль</p>
+                <input type="password" name="password"><br>
+                <div class="account">
+                    <a href="/registration/">Створити обліковий запис</a>
+                </div>
+                <button type="submit" class="log-button">Увійти</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
