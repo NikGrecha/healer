@@ -37,6 +37,22 @@ public class LoginController {
         {
             return "redirect:/doctorMain";
         }
+        else if (role.equals("user"))
+        {
+            return "redirect:/userMain";
+        }
+        else if (role.equals("lab"))
+        {
+            return "redirect:/laboratoryMain";
+        }
+        else if (role.equals("physio"))
+        {
+            return "redirect:/physioMain";
+        }
+        else if (role.equals("admin"))
+        {
+            return "redirect:/adminMain";
+        }
         else{
             return "redirect:/guestMain";
         }

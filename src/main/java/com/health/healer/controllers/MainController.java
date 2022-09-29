@@ -20,4 +20,27 @@ public class MainController {
         return "doctorMain";
     }
 
+    @GetMapping("/laboratoryMain")
+    public String loginLaboratory(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "laboratoryMain";
+    }
+
+    @GetMapping("/physioMain")
+    public String loginPhysio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "physioMain";
+    }
+
+    @GetMapping("/adminMain")
+    public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "adminMain";
+    }
+
+    @GetMapping("/userMain")
+    public String loginUser(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "userMain";
+    }
 }
