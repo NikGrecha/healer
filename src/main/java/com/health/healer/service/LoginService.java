@@ -2,6 +2,7 @@ package com.health.healer.service;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.buf.StringCache;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -14,7 +15,7 @@ public class LoginService {
         return DriverManager.getConnection("jdbc:postgresql://localhost:5432/Healer", name, password);
     }
 
-    public String getRole(String name, Connection connection) throws SQLException {
+    public String getRole(String name, @NotNull Connection connection) throws SQLException {
         String role = null;
         String roleSQL = "SELECT rolname FROM pg_roles WHERE pg_has_role( '".concat(name).concat("', oid, 'member') AND rolname != '").concat(name).concat("' ");
 
