@@ -33,17 +33,26 @@
     </div>
     <br><br>
 
-    <div align="center">
-        <p>Додавання співробітника</p>
-        <input type="text" name="second_name">
-        <input type="text" name="first_name">
-        <input type="text" name="third_name">
-        <input type="date" name="birthday">
-        <input type="text" name="mobile">
-        <input type="text" name="speciality">
-        <input type="text" name="department">
-    </div>
+    <form action="/addWorker">
+        <div align="center">
+            <p>Додавання співробітника</p>
+            <input type="text" name="second_name">
+            <input type="text" name="first_name">
+            <input type="text" name="third_name">
+            <input type="date" name="birthday">
+            <input type="text" name="mobile">
+            <input type="text" name="speciality">
+            <input type="text" name="department">
+            <input type="text" name="password">
+        </div>
+
+        <div class="log-form-conteiner" align="center">
+            <button type="submit" class="log-button">Додати співробітника</button>
+        </div>
+    </form>
+
     <br>
+
     <div class="log-form-conteiner" align="center">
         <form action="/logout">
             <button type="submit" class="log-button">Додати співробітника</button>
