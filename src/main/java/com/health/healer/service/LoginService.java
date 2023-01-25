@@ -11,7 +11,6 @@ import java.sql.*;
 //@RequiredArgsConstructor
 public class LoginService {
     public Connection getConnection(String name, String password) throws SQLException {
-
         return DriverManager.getConnection("jdbc:postgresql://localhost:5432/Healer", name, password);
     }
 
