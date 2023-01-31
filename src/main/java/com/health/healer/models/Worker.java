@@ -28,4 +28,6 @@ public class Worker {
     private String department;
 
     private String speciality;
+
+    private String login;
 }
