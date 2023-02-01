@@ -7,4 +7,6 @@ public interface WorkerRepository {
     void changeUserPassword (Connection connection, String login, String password);
 
     String loginByMobile (Connection connection, String mobile);
+
+    int getLastId(Connection connection);
 }

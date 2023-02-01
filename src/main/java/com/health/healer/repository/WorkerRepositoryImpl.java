@@ -46,9 +46,8 @@ public class WorkerRepositoryImpl extends JDBCCustomRepositoryImpl <Worker, Inte
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, mobile);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
-                userLogin = resultSet.getString(1);
-            }
+            resultSet.next();
+            userLogin = resultSet.getString(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,4 +55,18 @@ public class WorkerRepositoryImpl extends JDBCCustomRepositoryImpl <Worker, Inte
     }
 
 
+    public int getLastId(Connection connection) {
+        int id = 0;
+        String query = "SELECT last_value FROM worker_id_seq";
+
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            resultSet.next();
+            id = resultSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return id;
+    }
 }

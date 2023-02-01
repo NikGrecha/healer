@@ -1,7 +1,5 @@
 package com.health.healer.service;
 
-import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.buf.StringCache;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +25,16 @@ public class LoginService {
         }
 
         return role;
+    }
+
+    public void createPgUser(String login, String password, String role, Connection connection){
+        String query = "CREATE USER " + login + " WITH ENCRYPTED PASSWORD '" + password + "' ROLE " + role;
+
+        try(Statement statement = connection.createStatement()) {
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
