@@ -16,34 +16,47 @@
     </div>
     <br><br>
 
-    <div align="center">
-        <p>Додавання пацієнта</p>
-        <input type="text" name="second_name">
-        <input type="text" name="first_name">
-        <input type="text" name="third_name">
-        <input type="date" name="birthday">
-        <input type="text" name="mobile">
-        <input type="text" name="allergy">
-    </div>
-    <br>
-    <div class="log-form-conteiner" align="center">
-        <form action="/logout">
+    <form action="adminMain/addPatient" method="post">
+        <div align="center">
+            <p>Додавання пацієнта</p>
+            <input type="text" name="second_name" placeholder="Фімалія">
+            <input type="text" name="first_name" placeholder="Ім'я">
+            <input type="text" name="third_name" placeholder="По батькові">
+            <input type="date" name="birthday" placeholder="День народження">
+            <input type="text" name="mobile" placeholder="Номер телефону">
+            <input type="text" name="allergy" placeholder="Алергії">
+            <input type="password" name="password" placeholder="Пароль">
+        </div>
+
+        <br>
+        <div class="log-form-conteiner" align="center">
             <button type="submit" class="log-button">Додати пацієнта</button>
-        </form>
-    </div>
+        </div>
+    </form>
+
     <br><br>
 
-    <div align="center">
-        <p>Додавання співробітника</p>
-        <input type="text" name="second_name">
-        <input type="text" name="first_name">
-        <input type="text" name="third_name">
-        <input type="date" name="birthday">
-        <input type="text" name="mobile">
-        <input type="text" name="speciality">
-        <input type="text" name="department">
-    </div>
+    <form action="adminMain/addWorker" method="post">
+        <div align="center">
+            <p>Додавання співробітника</p>
+            <input type="text" name="second_name">
+            <input type="text" name="first_name">
+            <input type="text" name="third_name">
+            <input type="date" name="birthday">
+            <input type="text" name="mobile">
+            <input type="text" name="speciality">
+            <input type="text" name="department">
+            <input type="text" name="password">
+            <input type="text" name="login" value="">
+        </div>
+
+        <div class="log-form-conteiner" align="center">
+            <button type="submit" class="log-button">Додати співробітника</button>
+        </div>
+    </form>
+
     <br>
+
     <div class="log-form-conteiner" align="center">
         <form action="/logout">
             <button type="submit" class="log-button">Додати співробітника</button>
@@ -51,14 +64,11 @@
     </div>
     <br><br>
 
-    <div align="center">
-        <p>Звільнення спіробітника</p>
-        <input type="text" name="id">
-        <input type="text" name="new_password">
-    </div>
     <br>
     <div class="log-form-conteiner" align="center">
-        <form action="/logout">
+        <form action="/adminMain/changeUserPassword" method="post">
+            <input type="text" name="mobile">
+            <input type="text" name="newPassword">
             <button type="submit" class="log-button">Звільнити співробітника</button>
         </form>
     </div>

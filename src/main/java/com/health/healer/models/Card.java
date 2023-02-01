@@ -10,7 +10,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class Card {
-
     private int id;
 
     private String secondName;
