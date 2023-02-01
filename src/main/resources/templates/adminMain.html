@@ -60,14 +60,11 @@
     </div>
     <br><br>
 
-    <div align="center">
-        <p>Звільнення спіробітника</p>
-        <input type="text" name="id">
-        <input type="text" name="new_password">
-    </div>
     <br>
     <div class="log-form-conteiner" align="center">
-        <form action="/logout">
+        <form action="/adminMain/changeUserPassword" method="post">
+            <input type="text" name="mobile">
+            <input type="text" name="newPassword">
             <button type="submit" class="log-button">Звільнити співробітника</button>
         </form>
     </div>
