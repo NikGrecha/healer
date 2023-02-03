@@ -13,11 +13,11 @@ import java.util.Date;
 
 public class Visit {
 
-    private int id;
+    private Integer id;
 
-    private int doctorId;
+    private Integer doctorId;
 
-    private int cardId;
+    private Integer cardId;
 
     private String complaint;
 

@@ -17,6 +17,6 @@ public class CardService {
 
     public void save(Card card, String password, Connection connection){
         cardRepository.save(card, connection);
-        loginService.createPgUser(card.getMobile(), password, "card", connection);
+        loginService.createPgUser(card.getMobile(), password, "user", connection);
     }
 }

@@ -11,13 +11,13 @@ import java.util.Date;
 
 
 public class GoP {
-    private int id;
+    private Integer id;
 
-    private int visitId;
+    private Integer visitId;
 
     private String procedureType;
 
     private String dopInfo;
 
-    private int visitLeft;
+    private Integer visitLeft;
 }

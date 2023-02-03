@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Worker {
 
-    private int id;
+    private Integer id;
 
     private String secondName;
 

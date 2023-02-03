@@ -10,15 +10,15 @@ import java.util.Date;
 
 
 public class GoL {
-    private int id;
+    private Integer id;
 
-    private int visitId;
+    private Integer visitId;
 
     private String analysisType;
 
     private String dopInfo;
 
-    private int workerId;
+    private Integer workerId;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfTaking;

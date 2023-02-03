@@ -27,7 +27,7 @@ public class WorkerService{
         String department = switch (worker.getDepartment()) {
             case "Врач" -> "doctor";
             case "Лаборатория" -> "lab";
-            case "Физиотерапевт" -> "phisio";
+            case "Процедурная" -> "physio";
             default -> "";
         };
 

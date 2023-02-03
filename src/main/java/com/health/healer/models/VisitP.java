@@ -12,11 +12,11 @@ import java.util.Date;
 
 
 public class VisitP {
-    private int id;
+    private Integer id;
 
-    private int workerId;
+    private Integer workerId;
 
-    private int goPid;
+    private Integer goPid;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateTime;

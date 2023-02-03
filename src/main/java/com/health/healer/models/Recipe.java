@@ -8,13 +8,13 @@ import java.util.Date;
 @Data
 
 public class Recipe {
-    private int id;
+    private Integer id;
 
-    private int visitId;
+    private Integer visitId;
 
     private String drugName;
 
-    private int length;
+    private Integer length;
 
     private String frequency;
 
