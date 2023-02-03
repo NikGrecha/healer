@@ -28,7 +28,7 @@ public class WorkerService{
             case "Врач" -> "doctor";
             case "Лаборатория" -> "lab";
             case "Процедурная" -> "physio";
-            default -> "";
+            default -> "user";
         };
 
         String login = department + workerRepository.getLastId(connection);

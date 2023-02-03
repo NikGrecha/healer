@@ -63,8 +63,13 @@ public class JDBCCustomRepositoryImpl<T, ID> extends ReadOnlyRepositoryImpl<T, I
         try(PreparedStatement statement = connection.prepareStatement(queryInsert)) {
 
             for(int i = 0; i < columnList.size(); i++){
-                    statement.setObject(i+1, methodList.get(i).invoke(t));
-//                }
+                if(methodList.get(i).invoke(t) instanceof java.util.Date ){
+                    java.sql.Date sqlDate = new java.sql.Date(((java.util.Date)methodList.get(i).invoke(t)).getTime());
+                    statement.setDate(i+1, sqlDate);
+                }
+                else {
+                    statement.setObject(i + 1, methodList.get(i).invoke(t));
+                }
             }
 
             statement.executeUpdate();
