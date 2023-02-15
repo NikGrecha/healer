@@ -28,7 +28,7 @@ public class LoginService {
     }
 
     public void createPgUser(String login, String password, String role, Connection connection){
-        String query = "CREATE USER \"" + login + "\" WITH ENCRYPTED PASSWORD '" + password + "' ROLE \"" + role +"\"";
+        String query = "CREATE USER \"" + login + "\" WITH ENCRYPTED PASSWORD '" + password + "' IN ROLE \"" + role +"\"";
         try(Statement statement = connection.createStatement()) {
             statement.executeUpdate(query);
         } catch (SQLException e) {

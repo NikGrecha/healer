@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Service
 public class WorkerService{
@@ -13,6 +16,9 @@ public class WorkerService{
     private WorkerRepositoryImpl workerRepository;
     @Autowired
     private LoginService loginService;
+    public int findIdByLogin(Connection connection, String login){
+        return workerRepository.findIdByLogin(connection, login);
+    }
 
     public boolean changeUserPassword(Connection connection,  String newPassword, String mobile) {
         if(workerRepository.isWorkerExist(connection, mobile)){

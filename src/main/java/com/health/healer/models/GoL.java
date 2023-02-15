@@ -26,4 +26,6 @@ public class GoL {
     private String status;
 
     private String result;
+
+    private String pacientMobile;
 }

@@ -9,4 +9,6 @@ public interface WorkerRepository {
     String loginByMobile (Connection connection, String mobile);
 
     int getLastId(Connection connection);
+
+    int findIdByLogin(Connection connection, String login);
 }

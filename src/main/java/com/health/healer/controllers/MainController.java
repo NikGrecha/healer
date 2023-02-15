@@ -20,11 +20,11 @@ public class MainController {
         return "doctorMain";
     }
 
-    @GetMapping("/laboratoryMain")
-    public String loginLaboratory(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "laboratoryMain";
-    }
+//    @GetMapping("/labMain")
+//    public String loginLaboratory(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "labMain";
+//    }
 
     @GetMapping("/physioMain")
     public String loginPhysio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {

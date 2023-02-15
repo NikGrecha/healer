@@ -1,6 +1,7 @@
 package com.health.healer.controllers;/*Hi Nick*/
 import com.health.healer.connections.HttpSessionBean;
 import com.health.healer.service.LoginService;
+import com.health.healer.service.WorkerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.sql.SQLException;
 
 @Controller
-@RequiredArgsConstructor
 
 public class LoginController {
     @Autowired
     private HttpSessionBean httpSessionBean;
-    private final LoginService loginService;
+    @Autowired
+    private LoginService loginService;
+
+    @Autowired
+    private WorkerService workerService;
 
     @GetMapping("/login")
     public String login() {
@@ -30,7 +34,11 @@ public class LoginController {
         }
         httpSessionBean.setConnection(loginService.getConnection(name, password));
 
+        httpSessionBean.setId(workerService.findIdByLogin(httpSessionBean.getConnection(), name));
+
         String role = loginService.getRole(name, httpSessionBean.getConnection());
+
+        System.out.print(role);
 
         if (role.equals("doctor"))
         {
@@ -42,7 +50,7 @@ public class LoginController {
         }
         else if (role.equals("lab"))
         {
-            return "redirect:/laboratoryMain";
+            return "redirect:/labMain";
         }
         else if (role.equals("physio"))
         {

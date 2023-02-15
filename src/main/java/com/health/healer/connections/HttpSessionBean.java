@@ -12,6 +12,7 @@ import java.sql.SQLException;
 @Component
 public class HttpSessionBean {
     Connection connection;
+    int id;
 
     {
         try {
