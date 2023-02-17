@@ -33,5 +33,4 @@ public class LabController {
         goLService.saveDocument(analysisResult, goLId, httpSessionBean.getId(), httpSessionBean.getConnection());
         return "redirect:/labMain";
     }
-
 }

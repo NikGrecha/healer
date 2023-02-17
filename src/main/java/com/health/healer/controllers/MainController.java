@@ -26,11 +26,11 @@ public class MainController {
 //        return "labMain";
 //    }
 
-    @GetMapping("/physioMain")
-    public String loginPhysio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "physioMain";
-    }
+//    @GetMapping("/physioMain")
+//    public String loginPhysio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "physioMain";
+//    }
 
     @GetMapping("/adminMain")
     public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
