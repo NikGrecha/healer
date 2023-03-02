@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class GoPView {
     private Integer id;
-
     private Integer visitId;
     private String procedureType;
     private String dopInfo;

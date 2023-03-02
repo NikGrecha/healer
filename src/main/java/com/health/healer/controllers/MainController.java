@@ -14,11 +14,11 @@ public class MainController {
         return "guestMain";
     }
 
-    @GetMapping("/doctorMain")
-    public String loginDoctor(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "doctorMain";
-    }
+//    @GetMapping("/doctorMain")
+//    public String loginDoctor(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "doctorMain";
+//    }
 
 //    @GetMapping("/labMain")
 //    public String loginLaboratory(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {

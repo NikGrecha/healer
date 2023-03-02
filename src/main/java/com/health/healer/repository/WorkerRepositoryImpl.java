@@ -23,7 +23,6 @@ public class WorkerRepositoryImpl extends JDBCCustomRepositoryImpl <Worker, Inte
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return userId ;
     }
 

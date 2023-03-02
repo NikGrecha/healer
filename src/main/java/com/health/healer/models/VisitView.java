@@ -1,7 +1,8 @@
 package com.health.healer.models;
 
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -9,13 +10,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
-
-public class Visit {
-
+public class VisitView {
     private Integer id;
 
-    private Integer doctorId;
+    private String doctorName;
 
     private Integer cardId;
 
@@ -27,6 +25,4 @@ public class Visit {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
-
-
 }

@@ -19,7 +19,7 @@ public class Card {
     private String thirdName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateTime;
+    private Date birthday;
 
     private String mobile;
 

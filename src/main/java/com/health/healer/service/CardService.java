@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.util.List;
 
 @Service
 public class CardService {
@@ -14,6 +15,10 @@ public class CardService {
     private CardRepositoryImpl cardRepository;
     @Autowired
     private LoginService loginService;
+
+    public Card findByMobile(Connection connection, String mobile) {
+        return cardRepository.findByMobile(connection, mobile);
+    }
 
     public void save(Card card, String password, Connection connection){
         cardRepository.save(card, connection);
