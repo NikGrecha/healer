@@ -7,5 +7,5 @@ import java.sql.Connection;
 import java.util.List;
 
 public interface VisitRepository {
-    List<VisitView> findByCardId(int cardId, Connection connection);
+    List<VisitView> findVisitByCardId(int cardId, Connection connection);
 }

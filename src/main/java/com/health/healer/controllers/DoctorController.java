@@ -2,10 +2,8 @@ package com.health.healer.controllers;
 
 import com.health.healer.connections.HttpSessionBean;
 import com.health.healer.models.Card;
-import com.health.healer.service.CardService;
-import com.health.healer.service.GoLService;
-import com.health.healer.service.GoPService;
-import com.health.healer.service.VisitService;
+import com.health.healer.models.Recipe;
+import com.health.healer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,13 +29,18 @@ public class DoctorController {
     @Autowired
     private CardService cardService;
 
+    @Autowired
+    private RecipeService recipeService;
+
     @GetMapping
     public String loginDoctor(@RequestParam(name="mobile", required=false) String mobile, Model model) {
         Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
         if(mobile != null){
             model.addAttribute("card", card);
-            model.addAttribute("visitList", visitService.findByCardId(card.getId(), httpSessionBean.getConnection()));
-            //model.addAttribute("recipeList", visitService.findByCardId(card.getId(), httpSessionBean.getConnection()));
+            model.addAttribute("visitList", visitService.findVisitByCardId(card.getId(), httpSessionBean.getConnection()));
+            model.addAttribute("recipeList", recipeService.findRecipeByCardId(card.getId(), httpSessionBean.getConnection()));
+            model.addAttribute("goPList", goPService.findGoPByCardId(card.getId(), httpSessionBean.getConnection()));
+            model.addAttribute("goLList", goLService.findGoLByCardId(card.getId(), httpSessionBean.getConnection()));
         }
 
         return "doctorMain";

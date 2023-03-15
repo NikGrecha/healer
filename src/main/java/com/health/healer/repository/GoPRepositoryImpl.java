@@ -3,6 +3,7 @@ package com.health.healer.repository;
 import com.health.healer.models.GoL;
 import com.health.healer.models.GoP;
 import com.health.healer.models.GoPView;
+import com.health.healer.models.RecipeView;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -52,6 +53,33 @@ public class GoPRepositoryImpl implements GoPRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<GoPView> findGoPByCardId(int cardId, Connection connection) {
+        List<GoPView> goPList = new ArrayList<>();
+        String query = """
+                SELECT * FROM go_p_view
+                WHERE card_id = ?
+                """;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, cardId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                GoPView goP = new GoPView();
+
+                goP.setId(resultSet.getInt("id"));
+                goP.setVisitId(resultSet.getInt("visit_id"));
+                goP.setProcedureType(resultSet.getString("procedure_type"));
+                goP.setDopInfo(resultSet.getString("dop_info"));
+                goP.setVisitLeft(resultSet.getInt("visit_left"));
+
+                goPList.add(goP);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goPList;
     }
 }
 

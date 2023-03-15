@@ -124,7 +124,7 @@
             <th>Status</th>
             <th>Result</th>
         </tr>
-        <tr th:each = "el : ${analysisList}">
+        <tr th:each = "el : ${goLList}">
             <td th:text="${el.id}"></td>
             <td th:text="${el.visitId}"></td>
             <td th:text="${el.analysisType}"></td>
@@ -148,7 +148,7 @@
             <th>Dop_Info</th>
             <th>Visit_Left</th>
         </tr>
-        <tr th:each = "el : ${procedureList}">
+        <tr th:each = "el : ${goPList}">
             <td th:text="${el.id}"></td>
             <td th:text="${el.visitId}"></td>
             <td th:text="${el.procedureType}"></td>

@@ -1,6 +1,8 @@
 package com.health.healer.service;
 
 import com.health.healer.models.GoL;
+import com.health.healer.models.GoLView;
+import com.health.healer.models.GoPView;
 import com.health.healer.repository.GoLRepository;
 import com.health.healer.repository.GoLRepositoryImpl;
 import com.health.healer.repository.WorkerRepositoryImpl;
@@ -19,11 +21,14 @@ public class GoLService {
     @Value("${filepath}")
     private String filepath;
     @Autowired
-    private GoLRepositoryImpl goLRepository;
+    private GoLRepositoryImpl goLRepositoryImpl;
 
     public List<GoL> takeGoLByMobile(Connection connection, String mobile) {
+        return goLRepositoryImpl.takeGoLByMobile(connection, mobile);
+    }
 
-        return goLRepository.takeGoLByMobile(connection, mobile);
+    public List<GoLView> findGoLByCardId (int cardId, Connection connection){
+        return goLRepositoryImpl.findGoLByCardId(cardId, connection);
     }
 
     public void saveDocument(MultipartFile file, int goLId, int workerId, Connection connection){
@@ -39,7 +44,7 @@ public class GoLService {
 
             file.transferTo(newFile);
 
-            goLRepository.upLoadResult(connection, goLId, workerId, file.getOriginalFilename());
+            goLRepositoryImpl.upLoadResult(connection, goLId, workerId, file.getOriginalFilename());
         } catch (IOException e) {
             e.printStackTrace();
         }

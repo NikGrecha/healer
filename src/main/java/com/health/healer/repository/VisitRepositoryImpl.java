@@ -15,7 +15,7 @@ import java.util.List;
 public class VisitRepositoryImpl extends JDBCCustomRepositoryImpl<Visit, Integer> implements VisitRepository{
 
     @Override
-    public List<VisitView> findByCardId(int cardId, Connection connection) {
+    public List<VisitView> findVisitByCardId(int cardId, Connection connection) {
         List<VisitView> visitList = new ArrayList<>();
         String query = """
                 SELECT * FROM visit_view

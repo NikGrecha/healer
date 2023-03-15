@@ -10,13 +10,15 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class VisitView {
+public class RecipeView {
     private Integer id;
-    private String doctorName;
+    private Integer doctorId;
     private Integer cardId;
-    private String complaint;
-    private String checkup;
-    private String diagnosis;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+    private Integer visitId;
+    private String drugName;
+    private Integer length;
+    private String frequency;
+    private String dopInfo;
 }

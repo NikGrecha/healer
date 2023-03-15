@@ -1,6 +1,8 @@
 package com.health.healer.repository;
 
 import com.health.healer.models.GoL;
+import com.health.healer.models.GoLView;
+import com.health.healer.models.GoPView;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -37,6 +39,36 @@ public class GoLRepositoryImpl implements GoLRepository {
                 goLresult.setPacientMobile(resultSet.getString("pacient_mobile"));
 
                 goLList.add(goLresult);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goLList;
+    }
+
+    @Override
+    public List<GoLView> findGoLByCardId(int cardId, Connection connection) {
+        List<GoLView> goLList = new ArrayList<>();
+        String query = """
+                SELECT * FROM go_l_view
+                WHERE card_id = ?
+                """;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, cardId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                GoLView goL = new GoLView();
+
+                goL.setId(resultSet.getInt("id"));
+                goL.setVisitId(resultSet.getInt("visit_id"));
+                goL.setAnalysisType(resultSet.getString("analysis_type"));
+                goL.setDopInfo(resultSet.getString("dop_info"));
+                goL.setWorkerId(resultSet.getInt("worker_id"));
+                goL.setDateOfTaking(resultSet.getDate("date_of_taking"));
+                goL.setStatus(resultSet.getString("status"));
+                goL.setResult(resultSet.getString("result"));
+
+                goLList.add(goL);
             }
         } catch (SQLException e) {
             e.printStackTrace();
