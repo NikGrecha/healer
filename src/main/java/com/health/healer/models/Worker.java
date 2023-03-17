@@ -4,6 +4,8 @@ import lombok.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class Worker {
     private String thirdName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateTime;
+    private LocalDate birthday;
 
     private String mobile;
 

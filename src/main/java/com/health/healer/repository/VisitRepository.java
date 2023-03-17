@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface VisitRepository {
     List<VisitView> findVisitByCardId(int cardId, Connection connection);
+
+    void addVisit (Connection connection, int workerId, int cardId, String complaint, String checkup, String diagnosis);
 }

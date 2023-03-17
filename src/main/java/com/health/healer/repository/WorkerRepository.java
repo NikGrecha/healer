@@ -11,4 +11,6 @@ public interface WorkerRepository {
     int getLastId(Connection connection);
 
     int findIdByLogin(Connection connection, String login);
+
+
 }

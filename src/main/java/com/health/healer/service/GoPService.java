@@ -1,9 +1,7 @@
 package com.health.healer.service;
 
-import com.health.healer.models.GoL;
 import com.health.healer.models.GoP;
 import com.health.healer.models.GoPView;
-import com.health.healer.models.RecipeView;
 import com.health.healer.repository.GoPRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +24,9 @@ public class GoPService {
 
     public List<GoPView> findGoPByCardId (int cardId, Connection connection){
         return goPRepositoryImpl.findGoPByCardId(cardId, connection);
+    }
+
+    public void save(Connection connection, GoP goP) {
+        goPRepositoryImpl.save(goP, connection);
     }
 }

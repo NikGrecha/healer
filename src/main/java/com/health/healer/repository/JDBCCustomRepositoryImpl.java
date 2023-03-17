@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.Date;
@@ -63,12 +65,19 @@ public class JDBCCustomRepositoryImpl<T, ID> extends ReadOnlyRepositoryImpl<T, I
         try(PreparedStatement statement = connection.prepareStatement(queryInsert)) {
 
             for(int i = 0; i < columnList.size(); i++){
-                if(methodList.get(i).invoke(t) instanceof java.util.Date ){
-                    java.sql.Date sqlDate = new java.sql.Date(((java.util.Date)methodList.get(i).invoke(t)).getTime());
-                    statement.setDate(i+1, sqlDate);
+                Object objectFieldValue = methodList.get(i).invoke(t);
+                if(objectFieldValue instanceof LocalDate){
+                    java.sql.Date date = java.sql.Date.valueOf(((LocalDate) objectFieldValue));
+                    statement.setDate(i+1, date);
+                } else if(objectFieldValue instanceof LocalDateTime){
+                    Timestamp date = Timestamp.valueOf(((LocalDateTime) objectFieldValue));
+                    statement.setTimestamp(i+1, date);
+                } else if(objectFieldValue instanceof LocalTime){
+                    Time time = Time.valueOf((LocalTime) objectFieldValue);
+                    statement.setTime(i+1, time);
                 }
-                else {
-                    statement.setObject(i + 1, methodList.get(i).invoke(t));
+                else{
+                    statement.setObject(i+1, objectFieldValue);
                 }
             }
 
@@ -77,6 +86,7 @@ public class JDBCCustomRepositoryImpl<T, ID> extends ReadOnlyRepositoryImpl<T, I
         } catch (SQLException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
@@ -93,14 +103,14 @@ public class JDBCCustomRepositoryImpl<T, ID> extends ReadOnlyRepositoryImpl<T, I
     }
 
     @Override
-    public void update(Class<T> tClass, ID id, String columnName, String value, Connection connection) {
+    public void update(Class<T> tClass, ID id, String columnName, Object value, Connection connection) {
         String tableName = getTableName(tClass.getSimpleName());
         String query = "UPDATE ".concat(tableName.toLowerCase()).concat(" SET ").concat(columnName).concat(" = ? WHERE id = ?");
         System.out.println("table_name: " + tableName.toLowerCase());
         System.out.println("query: " + query);
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
-            preparedStatement.setString(1, value);
+            preparedStatement.setObject(1, value);
             preparedStatement.setInt(2, (Integer) id);
             preparedStatement.executeUpdate();
             log.info("Set value {} for column {} of table{}", value, columnName, tableName);

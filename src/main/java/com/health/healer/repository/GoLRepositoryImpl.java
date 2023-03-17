@@ -9,11 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class GoLRepositoryImpl implements GoLRepository {
+public class GoLRepositoryImpl extends JDBCCustomRepositoryImpl <GoL, Integer> implements GoLRepository {
 
     @Override
     public List<GoL> takeGoLByMobile(Connection connection, String mobile) {
@@ -33,7 +34,7 @@ public class GoLRepositoryImpl implements GoLRepository {
                 goLresult.setAnalysisType(resultSet.getString("analysis_type"));
                 goLresult.setDopInfo(resultSet.getString("dop_info"));
                 goLresult.setWorkerId(resultSet.getInt("worker_id"));
-                goLresult.setDateOfTaking(resultSet.getDate("date_of_taking"));
+                goLresult.setDateOfTaking(resultSet.getObject("date_of_taking", LocalDateTime.class));
                 goLresult.setStatus(resultSet.getString("status"));
                 goLresult.setResult(resultSet.getString("result"));
                 goLresult.setPacientMobile(resultSet.getString("pacient_mobile"));
@@ -64,7 +65,7 @@ public class GoLRepositoryImpl implements GoLRepository {
                 goL.setAnalysisType(resultSet.getString("analysis_type"));
                 goL.setDopInfo(resultSet.getString("dop_info"));
                 goL.setWorkerId(resultSet.getInt("worker_id"));
-                goL.setDateOfTaking(resultSet.getDate("date_of_taking"));
+                goL.setDateOfTaking(resultSet.getObject("date_of_taking", LocalDateTime.class));
                 goL.setStatus(resultSet.getString("status"));
                 goL.setResult(resultSet.getString("result"));
 

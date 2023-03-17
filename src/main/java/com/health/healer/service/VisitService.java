@@ -1,5 +1,6 @@
 package com.health.healer.service;
 
+import com.health.healer.models.Visit;
 import com.health.healer.models.VisitView;
 import com.health.healer.repository.VisitRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,4 +18,7 @@ public class VisitService {
         return visitRepositoryImpl.findVisitByCardId(cardId, connection);
     }
 
+    public void save (Connection connection, Visit visit){
+        visitRepositoryImpl.save(visit, connection);
+    }
 }

@@ -29,7 +29,7 @@ public class CardRepositoryImpl extends JDBCCustomRepositoryImpl<Card, Integer> 
                 card.setSecondName(resultSet.getString("second_name"));
                 card.setFirstName(resultSet.getString("first_name"));
                 card.setThirdName(resultSet.getString("third_name"));
-                card.setBirthday(resultSet.getDate("birthday"));
+                card.setBirthday(resultSet.getDate("birthday").toLocalDate());
                 card.setMobile(resultSet.getString("mobile"));
                 card.setAllergy(resultSet.getString("allergy"));
             }

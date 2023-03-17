@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class VisitRepositoryImpl extends JDBCCustomRepositoryImpl<Visit, Integer
                 visit.setComplaint(resultSet.getString("complaint"));
                 visit.setCheckup(resultSet.getString("checkup"));
                 visit.setDiagnosis(resultSet.getString("diagnosis"));
-                visit.setDate(resultSet.getDate("date"));
+                visit.setDate(resultSet.getObject("date", LocalDateTime.class));
                 visitList.add(visit);
             }
         } catch (SQLException e) {
@@ -43,4 +44,11 @@ public class VisitRepositoryImpl extends JDBCCustomRepositoryImpl<Visit, Integer
         }
         return visitList;
     }
+
+    @Override
+    public void addVisit(Connection connection, int workerId, int cardId, String complaint, String checkup, String diagnosis) {
+
+    }
+
+
 }

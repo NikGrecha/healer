@@ -4,6 +4,7 @@ import lombok.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class Visit {
     private String diagnosis;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private LocalDateTime date;
 
 
 }

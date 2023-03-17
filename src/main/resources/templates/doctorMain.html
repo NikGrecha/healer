@@ -63,7 +63,7 @@
 
     <br>
 
-<!--Таблица с данными посещений врачей выбраным пациентом-->
+<!--Таблица с данными посещений врачей-->
     <p align="center">Таблица с данными посещений врачей выбраным пациентом</p>
     <table border="1" align="center">
         <tr>
@@ -73,7 +73,7 @@
             <th>Complaint</th>
             <th>Checkup</th>
             <th>Diagnosis</th>
-            <th>Date</th>
+            <th >Date</th>
         </tr>
         <tr th:each = "el : ${visitList}">
             <td th:text="${el.id}"></td>
@@ -82,7 +82,7 @@
             <td th:text="${el.complaint}"></td>
             <td th:text="${el.checkup}"></td>
             <td th:text="${el.diagnosis}"></td>
-            <td th:text="${el.date}"></td>
+            <td th:text="${#temporals.format(el.date, 'dd-MM-yyyy HH:mm')}"></td>
         </tr>
     </table>
 
@@ -158,78 +158,80 @@
     </table>
 
     <br>
+    <div th:if = "${card}">
+        <!--Форма для додавання візиту-->
+        <form th:action="'doctorMain/addVisit/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання візиту</p>
+                <input type="text" name="complaint" placeholder="Скарга">
+                <input type="text" name="checkup" placeholder="Огляд">
+                <input type="text" name="diagnosis" placeholder="Діагноз">
+            </div>
 
-    <!--Форма для додавання візиту-->
-    <form action="doctorMain/addVisit" method="post">
-        <div align="center">
-            <p>Додавання візиту</p>
-            <input type="text" name="complaint" placeholder="Скарга">
-            <input type="text" name="checkup" placeholder="Огляд">
-            <input type="text" name="diagnosis" placeholder="Діагноз">
-        </div>
+            <br>
 
-        <br>
-
-        <div class="log-form-conteiner" align="center">
-            <button type="submit" class="log-button">Додати візит</button>
-        </div>
-    </form>
-
-    <br>
-
-    <!--Форма для призначення ліків-->
-    <form action="doctorMain/addRecipe" method="post">
-        <div align="center">
-            <p>Додавання рецепту</p>
-            <input type="text" name="drugName" placeholder="Назва">
-            <input type="text" name="length" placeholder="Довжина вживання (днів)">
-            <input type="text" name="frequency" placeholder="Частота вживання">
-            <input type="text" name="dopInfo" placeholder="Додаткова інформ">
-        </div>
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Додати візит</button>
+            </div>
+        </form>
 
         <br>
 
-        <div class="log-form-conteiner" align="center">
-            <button type="submit" class="log-button">Призначити ліки</button>
-        </div>
-    </form>
+        <!--Форма для призначення ліків-->
+        <form th:action="'doctorMain/addRecipe/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання рецепту</p>
+                <input type="text" name="drugName" placeholder="Назва">
+                <input type="text" name="length" placeholder="Довжина вживання (днів)">
+                <input type="text" name="frequency" placeholder="Частота вживання">
+                <input type="text" name="dopInfo" placeholder="Додаткова інформ">
+            </div>
 
-    <br>
+            <br>
 
-    <!--Форма для призначення аналізів-->
-    <form action="doctorMain/addGoL" method="post">
-        <div align="center">
-            <p>Додавання аналізу</p>
-            <input type="text" name="analysisType" placeholder="Тип аналізу">
-            <input type="text" name="dopInfo" placeholder="Додаткова інформ">
-            <input type="text" name="status" placeholder="Статус">
-            <input type="text" name="result" placeholder="Результат">
-        </div>
-
-        <br>
-
-        <div class="log-form-conteiner" align="center">
-            <button type="submit" class="log-button">Призначити аналіз</button>
-        </div>
-    </form>
-
-    <br>
-
-    <!--Форма для призначення процедур-->
-    <form action="doctorMain/addGoP" method="post">
-        <div align="center">
-            <p>Додавання процедури</p>
-            <input type="text" name="procedureType" placeholder="Тип процедури">
-            <input type="text" name="dopInfo" placeholder="Додаткова інформ">
-            <input type="text" name="visitLeft" placeholder="Відвідувань лишилося">
-        </div>
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Призначити ліки</button>
+            </div>
+        </form>
 
         <br>
 
-        <div class="log-form-conteiner" align="center">
-            <button type="submit" class="log-button">Призначити процедуру</button>
-        </div>
-    </form>
+        <!--Форма для призначення аналізів-->
+        <form th:action="'doctorMain/addGoL/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання аналізу</p>
+                <input type="text" name="analysisType" placeholder="Тип аналізу">
+                <input type="text" name="dopInfo" placeholder="Додаткова інформ">
+                <input type="text" name="status" placeholder="Статус">
+                <input type="text" name="result" placeholder="Результат">
+            </div>
+
+            <br>
+
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Призначити аналіз</button>
+            </div>
+        </form>
+
+        <br>
+
+        <!--Форма для призначення процедур-->
+        <form th:action="'doctorMain/addGoP/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання процедури</p>
+                <input type="text" name="procedureType" placeholder="Тип процедури">
+                <input type="text" name="dopInfo" placeholder="Додаткова інформ">
+                <input type="text" name="visitLeft" placeholder="Відвідувань лишилося">
+            </div>
+
+            <br>
+
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Призначити процедуру</button>
+            </div>
+        </form>
+
+    </div>
 
     <br>
     <br>
