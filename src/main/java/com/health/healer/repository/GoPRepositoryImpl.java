@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class GoPRepositoryImpl implements GoPRepository {
+public class GoPRepositoryImpl extends JDBCCustomRepositoryImpl <GoP, Integer> implements GoPRepository {
     @Override
     public List<GoPView> takeGoPByMobile(Connection connection, String mobile){
         List<GoPView> goPList = new ArrayList<>();

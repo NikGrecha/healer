@@ -49,4 +49,8 @@ public class GoLService {
             e.printStackTrace();
         }
     }
+
+    public void save(Connection connection, GoL goL) {
+        goLRepositoryImpl.save(goL, connection);
+    }
 }

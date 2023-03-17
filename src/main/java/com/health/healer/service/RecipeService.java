@@ -1,5 +1,6 @@
 package com.health.healer.service;
 
+import com.health.healer.models.Recipe;
 import com.health.healer.models.RecipeView;
 import com.health.healer.repository.RecipeRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,9 @@ public class RecipeService {
 
     public List<RecipeView> findRecipeByCardId (int cardId, Connection connection){
         return recipeRepositoryImpl.findRecipeByCardId(cardId, connection);
+    }
+
+    public void save(Connection connection, Recipe recipe) {
+        recipeRepositoryImpl.save(recipe, connection);
     }
 }
