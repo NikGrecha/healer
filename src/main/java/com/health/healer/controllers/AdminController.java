@@ -7,6 +7,8 @@ import com.health.healer.service.CardService;
 import com.health.healer.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,12 @@ public class AdminController {
     private HttpSessionBean httpSessionBean;
     @Autowired
     private CardService cardService;
+
+    @GetMapping
+    public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "adminMain";
+    }
 
     @PostMapping("/changeUserPassword")
     public String changeUserPassword(@RequestParam String mobile, @RequestParam String newPassword){

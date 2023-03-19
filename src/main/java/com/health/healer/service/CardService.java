@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -27,6 +28,10 @@ public class CardService {
 
     public void save(Card card, String password, Connection connection){
         cardRepository.save(card, connection);
-        loginService.createPgUser(card.getMobile(), password, "user", connection);
+        loginService.createPgUser(card.getMobile(), password, "pacient", connection);
+    }
+
+    public int findIdByLogin(Connection connection, String login) throws SQLException {
+        return cardRepository.findIdByLogin(connection, login);
     }
 }

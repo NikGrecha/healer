@@ -38,4 +38,23 @@ public class CardRepositoryImpl extends JDBCCustomRepositoryImpl<Card, Integer> 
         }
         return card;
     }
+
+    @Override
+    public int findIdByLogin(Connection connection, String login) throws SQLException {
+        int id = 0;
+        String query = """
+                SELECT id FROM card
+                WHERE mobile = ?
+                """;
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, login);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            id = resultSet.getInt(1);
+        }
+
+        return id;
+    }
+
+
 }

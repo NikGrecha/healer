@@ -1,6 +1,9 @@
 package com.health.healer.service;
 
+import com.health.healer.repository.CardRepositoryImpl;
+import com.health.healer.repository.WorkerRepositoryImpl;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -8,6 +11,12 @@ import java.sql.*;
 @Service
 //@RequiredArgsConstructor
 public class LoginService {
+
+    @Autowired
+    private WorkerRepositoryImpl workerRepository;
+    @Autowired
+    private CardRepositoryImpl cardRepository;
+
     public Connection getConnection(String name, String password) throws SQLException {
         return DriverManager.getConnection("jdbc:postgresql://localhost:5432/Healer", name, password);
     }
@@ -34,5 +43,21 @@ public class LoginService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public int findIdByLogin(String login, Connection connection){
+        int id = 0;
+
+        try {
+            id = workerRepository.findIdByLogin(connection, login);
+        } catch (SQLException e) {
+            try {
+                id = cardRepository.findIdByLogin(connection, login);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+
+        return id;
     }
 }

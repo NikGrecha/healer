@@ -1,9 +1,10 @@
-<!-- Просматривает свои приемы;
+<!-- Просматривает свои данные;
+     Просматривает свои приемы;
      Просматривает свои препараты;
      Просматривает свои направление на анализы и их результаты;
      Просматривает свои направление на процедуры; -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +20,134 @@
         </a>
     </div>
 
-    <div class="log-form-conteiner" align="right">
+    <!--Данные карты пациента-->
+    <p align="center">Данні пацієнта</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Second_Name</th>
+            <th>First_Name</th>
+            <th>Third_Name</th>
+            <th>Birthday</th>
+            <th>Mobile</th>
+            <th>Allergy</th>
+        </tr>
+        <tr th:each = "el : ${card}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.secondName}"></td>
+            <td th:text="${el.firstName}"></td>
+            <td th:text="${el.thirdName}"></td>
+            <td th:text="${el.birthday}"></td>
+            <td th:text="${el.mobile}"></td>
+            <td th:text="${el.allergy}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--Таблица с данными посещений врачей-->
+    <p align="center">Таблица с данными посещений врачей выбраным пациентом</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Doctor</th>
+            <th>Card_Id</th>
+            <th>Complaint</th>
+            <th>Checkup</th>
+            <th>Diagnosis</th>
+            <th >Date</th>
+        </tr>
+        <tr th:each = "el : ${visitList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.doctorName}"></td>
+            <td th:text="${el.cardId}"></td>
+            <td th:text="${el.complaint}"></td>
+            <td th:text="${el.checkup}"></td>
+            <td th:text="${el.diagnosis}"></td>
+            <td th:text="${#temporals.format(el.date, 'dd-MM-yyyy HH:mm')}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--Таблиця для пергляду призначених ліків-->
+    <p align="center">Таблиця для пергляду призначених ліків</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Visit_Id</th>
+            <th>Drug_Name</th>
+            <th>Length</th>
+            <th>Frequency</th>
+            <th>Dop_Info</th>
+        </tr>
+        <tr th:each = "el : ${recipeList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.visitId}"></td>
+            <td th:text="${el.drugName}"></td>
+            <td th:text="${el.length}"></td>
+            <td th:text="${el.frequency}"></td>
+            <td th:text="${el.dopInfo}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--Таблиця для пергляду призначених аналізів-->
+    <p align="center">Таблиця для пергляду призначених аналізів</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Visit_Id</th>
+            <th>Analysis_Type</th>
+            <th>Dop_Info</th>
+            <th>Worker_Id</th>
+            <th>Date_Of_Taking</th>
+            <th>Status</th>
+            <th>Result</th>
+        </tr>
+        <tr th:each = "el : ${goLList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.visitId}"></td>
+            <td th:text="${el.analysisType}"></td>
+            <td th:text="${el.dopInfo}"></td>
+            <td th:text="${el.workerId}"></td>
+            <td th:text="${el.dateOfTaking}"></td>
+            <td th:text="${el.status}"></td>
+            <td>
+                <form th:action="'/doctorMain/getResult/' + ${el.result}" method="get" th:if="${el.result} != 'Пусто'">
+                    <input type="submit" value="Download result">
+                </form>
+                <span th:unless="${el.result} != 'Пусто'">Пусто</span>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--Таблиця для пергляду призначених процедур-->
+    <p align="center">Таблиця для пергляду призначених процедур</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Visit_Id</th>
+            <th>Procedure_Type</th>
+            <th>Dop_Info</th>
+            <th>Visit_Left</th>
+        </tr>
+        <tr th:each = "el : ${goPList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.visitId}"></td>
+            <td th:text="${el.procedureType}"></td>
+            <td th:text="${el.dopInfo}"></td>
+            <td th:text="${el.visitLeft}"></td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    <div class="log-form-conteiner" align="center">
         <form action="/logout">
             <button type="submit" class="log-button">Вийти</button>
         </form>

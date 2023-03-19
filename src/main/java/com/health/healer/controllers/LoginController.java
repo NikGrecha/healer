@@ -34,7 +34,7 @@ public class LoginController {
         }
         httpSessionBean.setConnection(loginService.getConnection(name, password));
 
-        httpSessionBean.setId(workerService.findIdByLogin(httpSessionBean.getConnection(), name));
+        httpSessionBean.setId(loginService.findIdByLogin(name, httpSessionBean.getConnection()));
 
         String role = loginService.getRole(name, httpSessionBean.getConnection());
 
@@ -44,9 +44,9 @@ public class LoginController {
         {
             return "redirect:/doctorMain";
         }
-        else if (role.equals("user"))
+        else if (role.equals("pacient"))
         {
-            return "redirect:/userMain";
+            return "redirect:/userMain/" + name;
         }
         else if (role.equals("lab"))
         {

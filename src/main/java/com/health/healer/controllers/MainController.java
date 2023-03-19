@@ -32,15 +32,15 @@ public class MainController {
 //        return "physioMain";
 //    }
 
-    @GetMapping("/adminMain")
-    public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "adminMain";
-    }
+//    @GetMapping("/adminMain")
+//    public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "adminMain";
+//    }
 
-    @GetMapping("/userMain")
-    public String loginUser(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "userMain";
-    }
+//    @GetMapping("/userMain")
+//    public String loginUser(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "userMain";
+//    }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 @Service
 public class WorkerService{
@@ -13,7 +14,7 @@ public class WorkerService{
     private WorkerRepositoryImpl workerRepository;
     @Autowired
     private LoginService loginService;
-    public int findIdByLogin(Connection connection, String login){
+    public int findIdByLogin(Connection connection, String login) throws SQLException {
         return workerRepository.findIdByLogin(connection, login);
     }
 

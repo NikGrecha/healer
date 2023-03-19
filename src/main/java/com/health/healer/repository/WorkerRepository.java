@@ -1,6 +1,7 @@
 package com.health.healer.repository;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public interface WorkerRepository {
     boolean isWorkerExist (Connection connection, String mobile);
@@ -10,7 +11,7 @@ public interface WorkerRepository {
 
     int getLastId(Connection connection);
 
-    int findIdByLogin(Connection connection, String login);
+    int findIdByLogin(Connection connection, String login) throws SQLException;
 
 
 }
