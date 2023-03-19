@@ -4,36 +4,39 @@ import com.health.healer.connections.HttpSessionBean;
 import com.health.healer.models.*;
 import com.health.healer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Comparator;
-import java.util.Date;
+import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "/doctorMain")
 public class DoctorController {
+    @Value("${filepath}")
+    private String filepath;
     @Autowired
     private HttpSessionBean httpSessionBean;
-
     @Autowired
     private GoLService goLService;
-
     @Autowired
     private GoPService goPService;
-
     @Autowired
     private VisitService visitService;
-
     @Autowired
     private CardService cardService;
-
     @Autowired
     private RecipeService recipeService;
-
     @GetMapping
     public String loginDoctor(@RequestParam(name="mobile", required=false) String mobile, Model model) {
         Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
@@ -82,5 +85,17 @@ public class DoctorController {
         goPService.save(httpSessionBean.getConnection(), goP);
         attributes.addAttribute("mobile", cardService.findById(httpSessionBean.getConnection(), cardId).getMobile());
         return "redirect:/doctorMain";
+    }
+
+    @GetMapping("/getResult/{filename}")
+    @ResponseBody
+    public ResponseEntity<InputStreamResource> getImageDynamicType(@PathVariable String filename) throws FileNotFoundException {
+        MediaType contentType = MediaType.IMAGE_JPEG;
+        File initialFile = new File(filepath + filename);
+        InputStream targetStream = new FileInputStream(initialFile);
+        //InputStream in = getClass().getResourceAsStream(filepath + filename);
+        return ResponseEntity.ok()
+                .contentType(contentType)
+                .body(new InputStreamResource(Objects.requireNonNull(targetStream)));
     }
 }

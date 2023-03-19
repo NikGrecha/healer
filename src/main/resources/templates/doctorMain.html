@@ -132,7 +132,12 @@
             <td th:text="${el.workerId}"></td>
             <td th:text="${el.dateOfTaking}"></td>
             <td th:text="${el.status}"></td>
-            <td th:text="${el.result}"></td>
+            <td>
+                <form th:action="'/doctorMain/getResult/' + ${el.result}" method="get" th:if="${el.result} != 'Пусто'">
+                    <input type="submit" value="Download result">
+                </form>
+                <span th:unless="${el.result} != 'Пусто'">Пусто</span>
+            </td>
         </tr>
     </table>
 
