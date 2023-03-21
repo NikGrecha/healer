@@ -1,24 +1,18 @@
 <!-- Создает Пацциента
      Создает Работников (док; лаб; физио;)
      Лишает/Востанавливает доступ работника к его уч.зап.;
-     Аналитиика...;-->
+     -->
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" type="text/css" href="adminStyle.css">
     <title>Admin</title>
 </head>
 
 <body>
-    <div align="center">
-        <a>
-            <p>Hi Admin Pidaras</p>
-        </a>
-    </div>
-    <br><br>
 
     <form action="adminMain/addPatient" method="post">
         <div align="center">
@@ -66,15 +60,17 @@
 
     <br>
     <div class="log-form-conteiner" align="center">
+        <p>Зміна паролю співробітника</p>
         <form action="/adminMain/changeUserPassword" method="post">
             <input type="text" name="mobile">
             <input type="text" name="newPassword">
+            <br><br>
             <button type="submit" class="log-button">Звільнити співробітника</button>
         </form>
     </div>
     <br><br>
 
-    <div class="log-form-conteiner" align="right">
+    <div class="log-form-conteiner" align="center">
         <form action="/logout">
             <button type="submit" class="log-button">Вийти</button>
         </form>
