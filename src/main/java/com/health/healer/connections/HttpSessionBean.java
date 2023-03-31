@@ -11,16 +11,6 @@ import java.sql.SQLException;
 @SessionScope
 @Component
 public class HttpSessionBean {
-    Connection connection;
+    Connection connection = null;
     int id;
-
-    {
-        try {
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/Healer",
-                    "guest", "guest");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
