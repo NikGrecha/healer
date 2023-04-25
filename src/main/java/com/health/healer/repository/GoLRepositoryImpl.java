@@ -81,7 +81,7 @@ public class GoLRepositoryImpl extends JDBCCustomRepositoryImpl <GoL, Integer> i
     public void upLoadResult(Connection connection, int goLId, int workerId, String resultUrl) {
         String query = """
                 UPDATE go_l
-                SET result = ?, worker_id = ?, status = 'Выполнен'
+                SET result = ?, worker_id = ?
                 WHERE id = ?
                 """;
 
