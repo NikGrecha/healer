@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +16,13 @@
     </div>
       
     <div class="log-form-conteiner">
-        <form th:action="'/uuserMain/' + ${mobile}">
-          <button type="submit" class="goBack">Назад</button>
+        <form th:action="'/docMain?mobile=' + ${card.mobile}" method="post">
+          <button type="submit" class="goBack" >Назад</button>
         </form>
     </div>
 
     <div class="form-conteiner" align="center">
-        <form action="/docMain/" method="post">
+        <form th:action="'/docMain/' + ${card.id}" method="post">
             <input placeholder=" Скарга" class="dVCom" type="text" name="complaint">
 
             <br>            

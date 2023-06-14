@@ -16,38 +16,37 @@
     </div>
 
     <div class="form-conteiner" align="center">
-        <form action="/docMain/" method="post">
-            <input placeholder=" Ідентифікатор" class="dTakeId" type="text" name="id">
+        <form th:action="'/docMain/'+${card.mobile}" method="get">
+            <input placeholder=" Ідентифікатор" class="dTakeId" type="text" name="mobile">
 
-            <br>
             <button type="submit" class="dPatInfo">Переглянути данні</button>
         </form>
     </div>
-
+<div th:if="${card}">
     <div class="form-conteiner" align="center">
-        <form action="/docMain/" method="post">
+        <form th:action="'/docMain/docVisit/' + ${card.id}" method="get">
             <button type="submit" class="dMSearchPat">Додання візиту</button>
         </form>
     </div>
 
     <div class="form-conteiner" align="center">
-        <form action="/docMain/" method="post">
+        <form th:action="'/docMain/docRecipe/' + ${card.id}" method="get">
             <button type="submit" class="dMSRecipe">Додання рецепту</button>
         </form>
     </div>
 
     <div class="form-conteiner" align="center">
-        <form action="/docMain/" method="post">
+        <form th:action="'/docMain/docGoL/' + ${card.id}" method="get">
             <button type="submit" class="addGoL">Додання направлення на аналіз</button>
         </form>
     </div>
 
     <div class="form-conteiner" align="center">
-        <form action="/docMain/" method="post">
+        <form th:action="'/docMain/docGoP/' + ${card.id}" method="get">
             <button type="submit" class="addGoP">Додання направлення на процедуру</button>
         </form>
     </div>
-
+</div>
     <div class="position">
         <!--Данные карты пациента-->
         <p align="center">Дані пацієнта</p>
