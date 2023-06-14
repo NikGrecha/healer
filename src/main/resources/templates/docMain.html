@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-conteiner" align="center">
-        <form th:action="'/docMain/'+${card.mobile}" method="get">
+        <form action="/docMain" method="post">
             <input placeholder=" Ідентифікатор" class="dTakeId" type="text" name="mobile">
 
             <button type="submit" class="dPatInfo">Переглянути данні</button>
@@ -24,25 +24,25 @@
     </div>
 <div th:if="${card}">
     <div class="form-conteiner" align="center">
-        <form th:action="'/docMain/docVisit/' + ${card.id}" method="get">
+        <form th:action="'/docMain/docVisit/' + ${card.mobile}" method="get">
             <button type="submit" class="dMSearchPat">Додання візиту</button>
         </form>
     </div>
 
     <div class="form-conteiner" align="center">
-        <form th:action="'/docMain/docRecipe/' + ${card.id}" method="get">
+        <form th:action="'/docMain/docRecipe/' + ${card.mobile}" method="get">
             <button type="submit" class="dMSRecipe">Додання рецепту</button>
         </form>
     </div>
 
     <div class="form-conteiner" align="center">
-        <form th:action="'/docMain/docGoL/' + ${card.id}" method="get">
+        <form th:action="'/docMain/docGoL/' + ${card.mobile}" method="get">
             <button type="submit" class="addGoL">Додання направлення на аналіз</button>
         </form>
     </div>
 
     <div class="form-conteiner" align="center">
-        <form th:action="'/docMain/docGoP/' + ${card.id}" method="get">
+        <form th:action="'/docMain/docGoP/' + ${card.mobile}" method="get">
             <button type="submit" class="addGoP">Додання направлення на процедуру</button>
         </form>
     </div>

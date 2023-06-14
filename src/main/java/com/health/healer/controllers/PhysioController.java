@@ -18,13 +18,23 @@ public class PhysioController {
     private HttpSessionBean httpSessionBean;
     @Autowired
     private GoPService goPService;
+
     @GetMapping
-    public String loginPhysio(@RequestParam(required = false) String mobile, Model model) {
-        model.addAttribute("goPList", goPService.takeGoPByMobile(httpSessionBean.getConnection(), mobile));
+    public String physioMain() {
         return "physioMain";
     }
 
-    @PostMapping("/reduce")
+    @PostMapping("/physioSearch")
+    public String loginPhysio(@RequestParam(required = false) String mobile, Model model) {
+        model.addAttribute("goPList", goPService.takeGoPByMobile(httpSessionBean.getConnection(), mobile));
+        return "physioSearch";
+    }
+
+    @GetMapping("/physioCheck")
+    public String showReduceVisits (){
+        return "physioCheck";
+    }
+    @PostMapping("/physioCheck")
     public String reduceVisits (@RequestParam int id){
         goPService.reduceVisits(httpSessionBean.getConnection(), id);
         return "redirect:/physioMain";

@@ -16,7 +16,7 @@
     </div>
       
     <div class="log-form-conteiner">
-        <form action="/docMain">
+        <form th:action="'/docMain?mobile=' + ${card.mobile}" method="post">
           <button type="submit" class="goBack">Назад</button>
         </form>
     </div>

@@ -1,70 +1,30 @@
-<!-- Просматривает направление пациента на процедуру;
-     Фиксирует посещение пациентом процедуры;-->
 <!DOCTYPE html>
-<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/Style/physioStyle.css">
-    <title>Physio</title>
+    <link rel="stylesheet" type="text/css" href="/Style/globalStyle.css">
+    <link rel="stylesheet" type="text/css" href="/Style/physioStyleCustom.css">
+    <title>Physio Main</title>
 </head>
-
 <body>
-    
-    <form action="/physioMain" method="get">
-        <div align="center">
-            <p>Прегляд призначенних процедур</p>
-            <input type="text" name="mobile" placeholder="Тел.">
-        </div>
-
-        <br>
-        <div class="log-form-conteiner" align="center">
-            <button type="submit" class="log-button">Переглянути призначення</button>
-        </div>
-
-        <br><br>
-
-        <table border="1" align="center">
-            <tr>
-                <th>Id</th>
-                <th>Visit_Id</th>
-                <th>Procedure_Type</th>
-                <th>Dop_Info</th>
-                <th>Pacient_Mobile</th>
-            </tr>
-            <tr th:each = "el : ${goPList}">
-                <td th:text="${el.id}"></td>
-                <td th:text="${el.visitId}"></td>
-                <td th:text="${el.procedureType}"></td>
-                <td th:text="${el.dopInfo}"></td>
-                <td th:text="${el.visitLeft}"></td>
-                <td th:text="${el.mobile}"></td>
-            </tr>
-        </table>
-
-        <br><br>
-
-    </form>
-
-    <form action="/physioMain/reduce" method="post">
-        <div align="center">
-            <p>Пошук призначеної процедури</p>
-            <input type="text" name="id" placeholder="id">
-        </div>
-
-        <br>
-        <div class="log-form-conteiner" align="center">
-            <button type="submit" class="log-button">Зафіксувати відвідування</button>
-        </div>
-
-    </form>
-
-    <div class="log-form-conteiner" align="center">
+    <div class="log-form-conteiner">
         <form action="/logout">
-            <button type="submit" class="log-button">Вийти</button>
+          <button type="submit" class="exit">Вийти</button>
         </form>
-    </div>
-</body>
+      </div>
+      
+      <div class="large-form-conteiner">
+        <form action="/physioMain/physioSearch" method="post">
+          <button type="submit" class="largeButton phMfindGo">Переглянути призначення</button>
+        </form>
+      </div>
 
+      <div class="large-form-conteiner">
+        <form action="/physioMain/physioCheck" method="get">
+          <button type="submit" class="largeButton phMvisit">Зафіксувати відвідування</button>
+        </form>
+      </div>
+</body>
 </html>

@@ -36,7 +36,7 @@ public class DoctorController {
     @Autowired
     private RecipeService recipeService;
     @PostMapping
-    public String loginDoctor(@PathVariable(name="mobile") String mobile, Model model) {
+    public String loginDoctor(@RequestParam(name="mobile", required = false) String mobile, Model model) {
         Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
         System.out.println(mobile);
         if(mobile != null){
@@ -55,44 +55,35 @@ public class DoctorController {
         return "docMain";
     }
 
-    @GetMapping("/mobile")
-    public String docMobile2(@RequestParam(name = "mobile", required = false) String mobile) {
-
-        return "redirect:/docMain/" + mobile;
-    }
-
-    @GetMapping("/docVisit/{cardId}")
-    public String goDocVisit(@PathVariable int cardId, Model model) {
-        Card card = cardService.findById(httpSessionBean.getConnection(), cardId);
-
-        System.out.println(card.getId());
+    @GetMapping("/docVisit/{mobile}")
+    public String goDocVisit(@PathVariable String mobile, Model model) {
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
 
         model.addAttribute("card", card);
 
         return "docVisit";
     }
 
-    @GetMapping("/docRecipe/{cardId}")
-    public String goGocRecipe(@PathVariable int cardId, Model model) {
-        Card card = cardService.findById(httpSessionBean.getConnection(), cardId);
-
+    @GetMapping("/docRecipe/{mobile}")
+    public String goGocRecipe(@PathVariable String mobile, Model model) {
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
         model.addAttribute("card", card);
 
         return "docRecipe";
     }
 
-    @GetMapping("/docGoL/{cardId}")
-    public String goDocGoL(@PathVariable int cardId, Model model) {
-        Card card = cardService.findById(httpSessionBean.getConnection(), cardId);
+    @GetMapping("/docGoL/{mobile}")
+    public String goDocGoL(@PathVariable String mobile, Model model) {
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
 
         model.addAttribute("card", card);
 
         return "docGoL";
     }
 
-    @GetMapping("/docGoP/{cardId}")
-    public String goDocGoP(@PathVariable int cardId, Model model) {
-        Card card = cardService.findById(httpSessionBean.getConnection(), cardId);
+    @GetMapping("/docGoP/{mobile}")
+    public String goDocGoP(@PathVariable String mobile, Model model) {
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
 
         model.addAttribute("card", card);
 
