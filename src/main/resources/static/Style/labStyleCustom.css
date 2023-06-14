@@ -1,0 +1,68 @@
+button.getAnalys{
+    position: absolute;
+    left: 36px;
+    top: 291px;
+}
+
+button.downloadResult{
+    position: absolute;
+    left: 36px;
+    top: 569px;
+}
+
+input.labTakeId{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 502px;
+    height: 100px;
+    left: 709px;
+    top: 192px;
+}
+
+button.labTakeFindGo{
+    position: absolute;
+    width: 900px;
+    height: 125px;
+    left: 510px;
+    top: 329px;
+}
+
+.labTakeGoTable{
+    position: relative;
+    top: 491px;
+}
+
+input.labUploadGoId{
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    left: 709px;
+    top: 343px;
+}
+
+button.labUploadFindGo{
+    position: absolute;
+    width: 900px;
+    height: 125px;
+    left: 510px;
+    top: 480px;
+}
+
+button.review{
+    position: absolute;
+    width: 305px;
+    height: 100px;
+    left: 510px;
+    top: 637px;
+}
+
+input.labUploadFile{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    left: 857px;
+    top: 637px;
+}

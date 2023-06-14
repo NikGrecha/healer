@@ -42,7 +42,7 @@ public class LoginController {
 
         if (role.equals("doctor"))
         {
-            return "redirect:/doctorMain";
+            return "redirect:/docMain";
         }
         else if (role.equals("pacient"))
         {

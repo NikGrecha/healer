@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/Style/style.css">
+  <title>User</title>
+</head>
+<body>
+<div class="log-form-conteiner">
+  <form action="/logout">
+    <button type="submit" class="exit">Вийти</button>
+  </form>
+</div>
+
+<div class="log-form-conteiner">
+  <form th:action="'/userMain/' + ${mobile}">
+    <button type="submit" class="goBack">Назад</button>
+  </form>
+</div>
+
+<p align="center">Таблиця для пергляду призначених ліків</p>
+<table border="1" align="center">
+  <tr>
+    <th>Id</th>
+    <th>Visit_Id</th>
+    <th>Drug_Name</th>
+    <th>Length</th>
+    <th>Frequency</th>
+    <th>Dop_Info</th>
+  </tr>
+  <tr th:each = "el : ${recipeList}">
+    <td th:text="${el.id}"></td>
+    <td th:text="${el.visitId}"></td>
+    <td th:text="${el.drugName}"></td>
+    <td th:text="${el.length}"></td>
+    <td th:text="${el.frequency}"></td>
+    <td th:text="${el.dopInfo}"></td>
+  </tr>
+</table>
+
+</body>
+</html>

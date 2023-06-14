@@ -24,9 +24,23 @@ public class AdminController {
     private CardService cardService;
 
     @GetMapping
-    public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String loginAdmin() {
         return "adminMain";
+    }
+
+    @GetMapping("/adminAddPacient")
+    public String goAdminAddPacient() {
+        return "adminAddPacient";
+    }
+
+    @GetMapping("/adminAddWorker")
+    public String goAdminAddWorker() {
+        return "adminAddWorker";
+    }
+
+    @GetMapping("/adminChangePassword")
+    public String goAdminChangePassword() {
+        return "adminChangePassword";
     }
 
     @PostMapping("/changeUserPassword")

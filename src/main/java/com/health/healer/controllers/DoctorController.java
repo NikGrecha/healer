@@ -19,7 +19,7 @@ import java.util.Comparator;
 import java.util.Objects;
 
 @Controller
-@RequestMapping(value = "/doctorMain")
+@RequestMapping(value = "/docMain")
 public class DoctorController {
     @Value("${filepath}")
     private String filepath;
@@ -46,7 +46,7 @@ public class DoctorController {
             model.addAttribute("goLList", goLService.findGoLByCardId(card.getId(), httpSessionBean.getConnection()));
         }
 
-        return "doctorMain";
+        return "docMain";
     }
 
     @PostMapping("/addVisit/{cardId}")

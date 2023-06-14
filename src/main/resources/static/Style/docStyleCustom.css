@@ -1,0 +1,222 @@
+input.dTakeId{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 502px;
+    height: 100px;
+    left: 182px;
+    top: 149px;
+}
+
+button.dPatInfo{
+    position: absolute;
+    width: 740px;
+    height: 100px;
+    left: 736px;
+    top: 149px;
+}
+
+input.dMIdPat{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 74px;
+    top: 290px;
+}
+
+input.dMRec{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 525px;
+    top: 290px;
+}
+
+input.dMAn{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 975px;
+    top: 290px;
+}
+
+input.dMProc{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 1425px;
+    top: 290px;
+}
+
+button.dMSearchPat{
+    position: absolute;
+    width: 820px;
+    height: 125px;
+    left: 74px;
+    top: 330px;
+}
+
+button.dMSRecipe{
+    position: absolute;
+    width: 820px;
+    height: 125px;
+    left: 1010px;
+    top: 330px;
+}
+
+button.addGoL{
+    position: absolute;
+    width: 1757px;
+    height: 125px;
+    left: 73px;
+    top: 516px;
+}
+
+button.addGoP{
+    position: absolute;
+    width: 1756px;
+    height: 125px;
+    left: 74px;
+    top: 702px;
+}
+
+input.dVCom{
+    position: absolute;
+    width: 1640px;
+    height: 100px;
+    left: 130px;
+    top: 215px; 
+}
+
+input.dVRev{
+    position: absolute;
+    width: 1640px;
+    height: 100px;
+    left: 130px;
+    top: 393px; 
+}
+
+input.dVDia{
+    position: absolute;
+    width: 1640px;
+    height: 100px;
+    left: 130px;
+    top: 571px; 
+}
+
+button.dVaddVisit{
+    position: absolute;
+    width: 1848px;
+    height: 125px;
+    left: 45px;
+    top: 859px;
+}
+
+input.dRecName{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 705px;
+    top: 209px;
+}
+
+input.dRecLen{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 705px;
+    top: 362px;
+}
+
+input.dRecFreq{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 705px;
+    top: 515px;
+}
+
+input.dRecDI{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 705px;
+    top: 668px;
+}
+
+button.dRecAddRec{
+    position: absolute;
+    width: 1848px;
+    height: 125px;
+    left: 45px;
+    top: 859px;
+}
+
+input.dAnType{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 714px;
+    top: 361px;
+}
+
+input.dAnDI{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 714px;
+    top: 514px;
+}
+
+button.dAAddGoL{
+    position: absolute;
+    width: 1848px;
+    height: 125px;
+    left: 45px;
+    top: 859px;
+}
+
+input.dProcType{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 714px;
+    top: 243px;
+}
+
+input.dProcVisit{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 714px;
+    top: 396px;
+}
+
+input.dProcDI{
+    position: absolute;
+    width: 509px;
+    height: 100px;
+    left: 714px;
+    top: 549px;
+}
+
+button.dProcAddProc{
+    position: absolute;
+    width: 1848px;
+    height: 125px;
+    left: 45px;
+    top: 859px;
+}
+
+.position{
+    position: relative;
+    top:900px;
+}

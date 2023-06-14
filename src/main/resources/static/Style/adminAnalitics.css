@@ -1,0 +1,28 @@
+.button1{
+    position: absolute;
+    width: 182px;
+    height: 125px;
+    left: 1712px;
+    top: 27px;
+    background: #2E68FF;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    color: #FFFFFF;
+}
+.button2{
+    position: absolute;
+    width: 182px;
+    height: 125px;
+    left: 18px;
+    top: 20px;
+    background: #2E68FF;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    color: #FFFFFF;
+}

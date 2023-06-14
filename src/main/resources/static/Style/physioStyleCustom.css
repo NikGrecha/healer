@@ -1,0 +1,38 @@
+button.phMfindGo{
+    position: absolute;
+    width: 1848px;
+    height: 125px;
+    left: 36px;
+    top: 291px;
+}
+
+button.phMvisit{
+    position: absolute;
+    width: 1848px;
+    height: 125px;
+    left: 36px;
+    top: 569px;
+}
+
+input.phTakeId{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 502px;
+    height: 100px;
+    left: 709px;
+    top: 192px;
+}
+
+button.phTakeFindGo{
+    position: absolute;
+    width: 900px;
+    height: 125px;
+    left: 510px;
+    top: 329px;
+}
+
+.phTakeGoTable{
+    position: relative;
+    top: 491px;
+}

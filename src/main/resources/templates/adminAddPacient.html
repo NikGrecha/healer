@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/Style/adminAddPacient.css"/>
+    <link rel="stylesheet" type="text/css" href="/Style/style.css"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="log-form-conteiner">
+    <form action="/logout">
+        <button type="submit" class="exit">Вийти</button>
+    </form>
+</div>
+
+<div class="log-form-conteiner">
+    <form action="/adminMain">
+        <button type="submit" class="goBack">Назад</button>
+    </form>
+</div>
+
+<form action="adminMain/addPatient" method="post">
+    <div>
+        <input class="input" type="text" name="secondName" placeholder="Прізвище">
+        <input class="input1" type="text" name="firstName" placeholder="Ім'я">
+        <input class="input2" type="text" name="thirdName" placeholder="По батькові">
+        <input class="input3" type="date" name="birthday" placeholder="День народження">
+        <input class="input4" type="text" name="mobile" placeholder="Номер телефону">
+        <input class="input5" type="text" name="allergy" placeholder="Алергії">
+        <input class="input6" type="password" name="password" placeholder="Пароль">
+    </div>
+
+    <br>
+
+    <div class="log-form-conteiner" align="center">
+        <button type="submit" class="button3">Додати пацієнта</button>
+    </div>
+</form>
+
+</body>
+</html>

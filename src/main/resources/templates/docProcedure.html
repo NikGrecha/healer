@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Style/globalStyle.css">
+    <link rel="stylesheet" type="text/css" href="Style/docStyleCustom.css">
+    <title>Doc Procedure</title>
+</head>
+<body>
+    <div class="log-form-conteiner">
+        <form action="/logout">
+          <button type="submit" class="exit">Вийти</button>
+        </form>
+    </div>
+      
+    <div class="log-form-conteiner">
+        <form th:action="'/uuserMain/' + ${mobile}">
+          <button type="submit" class="goBack">Назад</button>
+        </form>
+    </div>
+
+    <div class="form-conteiner" align="center">
+        <form action="/docMain/" method="post">
+            <input placeholder=" Тип процедури" class="dProcType" type="text" name="typeProcedure">
+
+            <br>            
+            <input placeholder=" Відвідувань лишилося" class="dProcVisit" type="text" name="visitLeft">
+
+            <br>         
+            <input placeholder=" Додаткова інформація" class="dProcDI" type="text" name="dopInfo">
+
+            <br>
+            <button type="submit" class="dProcAddProc">Додати направлення на процедуру</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/Style/loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="/Style/style.css">
     <title>Login</title>
 </head>
 
@@ -15,13 +15,9 @@
             <form action="/login/authorization" method="post">
                 <!--<p>Увійти до особового кабінету</p>-->
 
-                <p>Логін</p>
+                <input placeholder=" Логін" class="login1" type="text" name="name">
 
-                <input type="text" name="name">
-
-                <p>Пароль</p>
-
-                <input type="password" name="password">
+                <input placeholder=" Пароль" class="login2" type="password" name="password">
                 <br>
                 <!--
                 <div class="account">
@@ -29,7 +25,7 @@
                 </div>
                 -->
                 <br>
-                <button type="submit" class="log-button" >Увійти</button>
+                <button type="submit" class="login" >Увійти</button>
             </form>
         </div>
     </main>

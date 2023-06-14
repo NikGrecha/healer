@@ -41,12 +41,55 @@ public class UserController {
         Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
 
         model.addAttribute("card", card);
-        model.addAttribute("visitList", visitService.findVisitByCardId(card.getId(), httpSessionBean.getConnection()));
-        model.addAttribute("recipeList", recipeService.findRecipeByCardId(card.getId(), httpSessionBean.getConnection()));
-        model.addAttribute("goPList", goPService.findGoPByCardId(card.getId(), httpSessionBean.getConnection()));
-        model.addAttribute("goLList", goLService.findGoLByCardId(card.getId(), httpSessionBean.getConnection()));
+//        model.addAttribute("visitList", visitService.findVisitByCardId(card.getId(), httpSessionBean.getConnection()));
+//        model.addAttribute("goPList", goPService.findGoPByCardId(card.getId(), httpSessionBean.getConnection()));
+//        model.addAttribute("goLList", goLService.findGoLByCardId(card.getId(), httpSessionBean.getConnection()));
 
         return "userMain";
+    }
+
+    @GetMapping("/userVisit/{mobile}")
+    public String goUserVisit(@PathVariable String mobile, Model model){
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
+
+//        model.addAttribute("card", card);
+        model.addAttribute("mobile", mobile);
+        model.addAttribute("visitList", visitService.findVisitByCardId(card.getId(), httpSessionBean.getConnection()));
+
+        return "userVisit";
+    }
+
+    @GetMapping("/userRecipe/{mobile}")
+    public String goUserRecipe(@PathVariable String mobile, Model model){
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
+
+//        model.addAttribute("card", card);
+        model.addAttribute("mobile", mobile);
+        model.addAttribute("recipeList", recipeService.findRecipeByCardId(card.getId(), httpSessionBean.getConnection()));
+
+        return "userRecipe";
+    }
+
+    @GetMapping("/userLab/{mobile}")
+    public String goUserLab(@PathVariable String mobile, Model model){
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
+
+//        model.addAttribute("card", card);
+        model.addAttribute("mobile", mobile);
+        model.addAttribute("goLList", goLService.findGoLByCardId(card.getId(), httpSessionBean.getConnection()));
+
+        return "userLab";
+    }
+
+    @GetMapping("/userPhys/{mobile}")
+    public String goUserPhys(@PathVariable String mobile, Model model){
+        Card card = cardService.findByMobile(httpSessionBean.getConnection(), mobile);
+
+//        model.addAttribute("card", card);
+        model.addAttribute("mobile", mobile);
+        model.addAttribute("goPList", goPService.findGoPByCardId(card.getId(), httpSessionBean.getConnection()));
+
+        return "userPhys";
     }
 
     @GetMapping("/getResult/{filename}")
