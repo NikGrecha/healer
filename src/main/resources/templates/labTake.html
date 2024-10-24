@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Style/globalStyle.css">
+    <link rel="stylesheet" type="text/css" href="/Style/labStyleCustom.css">
+    <title>Lab Take</title>
+</head>
+<body>
+    <div class="log-form-conteiner">
+        <form action="/logout">
+          <button type="submit" class="exit">Вийти</button>
+        </form>
+    </div>
+      
+    <div class="log-form-conteiner">
+        <form action="/labMain">
+          <button type="submit" class="goBack">Назад</button>
+        </form>
+    </div>
+
+    <div class="go-form-conteiner" align="center">
+        <form action="/labMain/labTake" method="post">
+            <input placeholder=" Ідентифікатор" class="labTakeId" type="text" name="mobile">
+
+            <button type="submit" class="labTakeFindGo" >Переглянути призначення</button>
+        </form>
+    </div>
+    <div class="labTakeGoTable">
+        <p align="center">Таблиця з даними призначених аналізів</p>
+        <table border="1" align="center">
+            <tr>
+                <th>Id</th>
+                <th>Visit_Id</th>
+                <th>Analysis_Type</th>
+                <th>Dop_Info</th>
+                <th>Pacient_Mobile</th>
+            </tr>
+            <tr th:each = "el : ${goLList}">
+                <td th:text="${el.id}"></td>
+                <td th:text="${el.visitId}"></td>
+                <td th:text="${el.analysisType}"></td>
+                <td th:text="${el.dopInfo}"></td>
+                <td th:text="${el.pacientMobile}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

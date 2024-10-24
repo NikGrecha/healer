@@ -1,0 +1,167 @@
+
+body{
+    background-color: #F5F5F5;
+}
+
+button.login{
+    position: absolute;
+    width: 509px;
+    height: 125px;
+    left: 705px;
+    top: 718px;
+
+    background: #2E68FF;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+button.goBack{
+    position: absolute;
+    width: 182px;
+    height: 100px;
+    left: 27px;
+    top: 30px;
+    background: #2E68FF;
+    border-radius: 20px;
+    font-size: 50px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+button.goVisit{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 108px;
+    top: 438px;
+
+    background: #2E68FF;
+    border-radius: 20px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+button.goRecipe{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 1030px;
+    top: 438px;
+
+    background: #2E68FF;
+    border-radius: 20px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+button.goLab{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 108px;
+    top: 702px;
+
+    background: #2E68FF;
+    border-radius: 20px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+button.goPhys{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 1030px;
+    top: 702px;
+
+    background: #2E68FF;
+    border-radius: 20px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+button.exit{
+    background: #2E68FF;
+    border-radius: 20px;
+
+    position: absolute;
+    width: 182px;
+    height: 100px;
+    left: 1700px;
+    top: 30px;
+
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 61px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+p{
+    color: #000000;
+}
+
+input.login1{
+font-size: 24pt;
+position: absolute;
+width: 509px;
+height: 100px;
+left: 705px;
+top: 324px;
+
+background: #D9D9D9;
+border: 4px solid #000000;
+border-radius: 20px;
+}
+
+input.login2{
+font-size: 24pt;
+position: absolute;
+width: 509px;
+height: 100px;
+left: 705px;
+top: 516px;
+
+background: #D9D9D9;
+border: 4px solid #000000;
+border-radius: 20px;
+}

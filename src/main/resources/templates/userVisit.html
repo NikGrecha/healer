@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/Style/UserVisit.css"/>
+  <link rel="stylesheet" type="text/css" href="/Style/style.css"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="log-form-conteiner">
+  <form action="/logout">
+    <button type="submit" class="exit button1">Вийти</button>
+  </form>
+</div>
+
+<div class="log-form-conteiner">
+  <form th:action="'/userMain/' + ${mobile}">
+    <button type="submit" class="goBack">Назад</button>
+  </form>
+</div>
+
+<p align="center">Таблица с данными посещений врачей выбраным пациентом</p>
+
+<table border="1" align="center">
+  <tr>
+    <th>Id</th>
+    <th>Doctor</th>
+    <th>Card_Id</th>
+    <th>Complaint</th>
+    <th>Checkup</th>
+    <th>Diagnosis</th>
+    <th >Date</th>
+  </tr>
+
+  <tr th:each = "el : ${visitList}">
+    <td th:text="${el.id}"></td>
+    <td th:text="${el.doctorName}"></td>
+    <td th:text="${el.cardId}"></td>
+    <td th:text="${el.complaint}"></td>
+    <td th:text="${el.checkup}"></td>
+    <td th:text="${el.diagnosis}"></td>
+    <td th:text="${#temporals.format(el.date, 'dd-MM-yyyy HH:mm')}"></td>
+  </tr>
+</table>
+</body>
+</html>

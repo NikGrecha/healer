@@ -1,80 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href="/Style/adminMain.css"/>
+    <link rel="stylesheet" type="text/css" href="/Style/style.css"/>
+    <title>Title</title>
 </head>
-
 <body>
-    <div align="center">
-        <a>
-            <p>Hi Admin Pidaras</p>
-        </a>
-    </div>
-    <br><br>
-
-    <div align="center">
-        <p>Додавання пацієнта</p>
-        <input type="text" name="second_name">
-        <input type="text" name="first_name">
-        <input type="text" name="third_name">
-        <input type="date" name="birthday">
-        <input type="text" name="mobile">
-        <input type="text" name="allergy">
-    </div>
-    <br>
-    <div class="log-form-conteiner" align="center">
+    <div class="log-form-conteiner">
         <form action="/logout">
-            <button type="submit" class="log-button">Додати пацієнта</button>
+            <button type="submit" class="exit">Вийти</button>
         </form>
     </div>
-    <br><br>
 
-    <form action="/addWorker">
-        <div align="center">
-            <p>Додавання співробітника</p>
-            <input type="text" name="second_name">
-            <input type="text" name="first_name">
-            <input type="text" name="third_name">
-            <input type="date" name="birthday">
-            <input type="text" name="mobile">
-            <input type="text" name="speciality">
-            <input type="text" name="department">
-            <input type="text" name="password">
-        </div>
-
-        <div class="log-form-conteiner" align="center">
-            <button type="submit" class="log-button">Додати співробітника</button>
-        </div>
-    </form>
-
-    <br>
-
-    <div class="log-form-conteiner" align="center">
-        <form action="/logout">
-            <button type="submit" class="log-button">Додати співробітника</button>
+    <div class="log-form-conteiner">
+        <form action="/adminMain/adminAddPacient">
+            <button type="submit" class="button2 text2">Додати пацієнта</button>
         </form>
     </div>
-    <br><br>
 
-    <br>
-    <div class="log-form-conteiner" align="center">
-        <form action="/adminMain/changeUserPassword" method="post">
-            <input type="text" name="mobile">
-            <input type="text" name="newPassword">
-            <button type="submit" class="log-button">Звільнити співробітника</button>
+    <div class="log-form-conteiner">
+        <form action="/adminMain/adminAddWorker">
+            <button type="submit" class="button3 text3">Додати працівника</button>
         </form>
     </div>
-    <br><br>
 
-    <div class="log-form-conteiner" align="right">
-        <form action="/logout">
-            <button type="submit" class="log-button">Вийти</button>
+    <div class="log-form-conteiner">
+        <form action="/adminMain/adminChangePassword">
+            <button type="submit" class="button4 text4">Змінити пароль</button>
         </form>
     </div>
+<!--    <div class="log-form-conteiner">-->
+<!--        <form action="">-->
+<!--            <button type="submit" class="button5 text5">Аналітичні інструменти</button>-->
+<!--        </form>-->
+<!--    </div>-->
 </body>
-
 </html>

@@ -1,0 +1,84 @@
+body {
+    background: #F5F5F5;
+}
+.button1{
+    position: absolute;
+    width: 182px;
+    height: 125px;
+    left: 1696px;
+    top: 36px;
+    background: #2E68FF;
+    border-radius: 20px;
+
+    font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 61px;
+        text-align: center;
+        color: #FFFFFF;
+}
+.text1{
+    position: absolute;
+    width: 152px;
+    height: 55px;
+    left: 1711px;
+    top: 69px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.button2{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 561px;
+    top: 118px;
+    background: #2E68FF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 50px;
+    color: #FFFFFF;
+}
+
+.button3{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 560px;
+    top: 348px;
+    background: #2E68FF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 50px;
+    color: #FFFFFF;
+}
+.button4{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 560px;
+    top: 578px;
+
+    background: #2E68FF;
+    border-radius: 20px;
+    text-align: center;
+        font-size: 50px;
+        color: #FFFFFF;
+}
+.button5{
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    left: 560px;
+    top: 808px;
+
+    background: #2E68FF;
+    border-radius: 20px;
+    text-align: center;
+        font-size: 50px;
+        color: #FFFFFF;
+}

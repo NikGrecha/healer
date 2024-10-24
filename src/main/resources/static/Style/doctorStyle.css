@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap');
+
+body{
+    font-family: 'DotGothic16', monospace;
+    background-color: #313131;
+    color: rgb(255, 255, 255);
+    font-size: 24pt;
+}
+
+button{
+    width: 250px;
+    height: 70px;
+    font-family: 'Inter', monospace;
+    font-size: 20pt;
+    border-radius: 15pt;
+}
+
+div{
+    margin-top: 2%;
+}
+
+input{
+    font-size: 14pt;
+}

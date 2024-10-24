@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/Style/userAnalises.css"/>
+  <link rel="stylesheet" type="text/css" href="/Style/style.css"/>
+  <title>Title</title>
+</head>
+<body>
+<div class="log-form-conteiner">
+  <form action="/logout">
+    <button type="submit" class="exit button1">Вийти</button>
+  </form>
+</div>
+<div class="log-form-conteiner">
+  <form th:action="'/userMain/' + ${mobile}">
+    <button type="submit" class="goBack">Назад</button>
+  </form>
+</div>
+<p align="center">Таблиця для пергляду призначених аналізів</p>
+<table border="1" align="center">
+  <tr>
+    <th>Id</th>
+    <th>Visit_Id</th>
+    <th>Analysis_Type</th>
+    <th>Dop_Info</th>
+    <th>Worker_Id</th>
+    <th>Date_Of_Taking</th>
+    <th>Status</th>
+    <th>Result</th>
+  </tr>
+  <tr th:each = "el : ${goLList}">
+    <td th:text="${el.id}"></td>
+    <td th:text="${el.visitId}"></td>
+    <td th:text="${el.analysisType}"></td>
+    <td th:text="${el.dopInfo}"></td>
+    <td th:text="${el.workerId}"></td>
+    <td th:text="${el.dateOfTaking}"></td>
+    <td th:text="${el.status}"></td>
+    <td>
+      <form th:action="'/doctorMain/getResult/' + ${el.result}" method="get" th:if="${el.result} != 'Пусто'">
+        <input type="submit" value="Download result">
+      </form>
+      <span th:unless="${el.result} != 'Пусто'">Пусто</span>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

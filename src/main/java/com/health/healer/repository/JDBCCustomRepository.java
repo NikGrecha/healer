@@ -8,5 +8,5 @@ public interface JDBCCustomRepository <T, ID> extends ReadOnlyRepository<T, ID> 
 
     void deleteById(Class<T> tClass, ID id, Connection connection);
 
-    void update(Class<T> tClass, ID id, String columnName, String value, Connection connection);
+    void update(Class<T> tClass, ID id, String columnName, Object value, Connection connection);
 }

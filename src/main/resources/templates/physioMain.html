@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Physio</title>
+    <link rel="stylesheet" type="text/css" href="/Style/globalStyle.css">
+    <link rel="stylesheet" type="text/css" href="/Style/physioStyleCustom.css">
+    <title>Physio Main</title>
 </head>
-
 <body>
-    <div align="center">
-        <a>
-            <p>Hi Physio-Doctor Pidaras</p>
-        </a>
-    </div>
-
-    <div class="log-form-conteiner" align="right">
+    <div class="log-form-conteiner">
         <form action="/logout">
-            <button type="submit" class="log-button">Вийти</button>
+          <button type="submit" class="exit">Вийти</button>
         </form>
-    </div>
-</body>
+      </div>
+      
+      <div class="large-form-conteiner">
+        <form action="/physioMain/physioSearch" method="post">
+          <button type="submit" class="largeButton phMfindGo">Переглянути призначення</button>
+        </form>
+      </div>
 
+      <div class="large-form-conteiner">
+        <form action="/physioMain/physioCheck" method="get">
+          <button type="submit" class="largeButton phMvisit">Зафіксувати відвідування</button>
+        </form>
+      </div>
+</body>
 </html>

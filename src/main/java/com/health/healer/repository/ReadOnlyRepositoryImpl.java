@@ -4,14 +4,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalAccessor;
 import java.util.*;
 
 public class ReadOnlyRepositoryImpl<T, ID> implements ReadOnlyRepository<T, ID>{
     @Override
     public List<T> findAll(Class<T> tClass, Connection connection) {
         String tableName = getTableName(tClass.getSimpleName());
-        String queryResult = "SELECT * FROM ".concat(tableName);
-        String queryColumn = "SELECT * FROM get_columns('".concat(tableName).concat("')");
+        String queryResult = "SELECT * FROM ".concat(tableName.toLowerCase());
+        String queryColumn = "SELECT * FROM get_columns('".concat(tableName.toLowerCase()).concat("')");
 
         List<T> result = new ArrayList<>();
         List<String> columnList = new ArrayList<>();
@@ -28,7 +31,7 @@ public class ReadOnlyRepositoryImpl<T, ID> implements ReadOnlyRepository<T, ID>{
             }
 
             rs.close();
-            // sort this shit
+            // sort
             columnList.sort(Comparator.naturalOrder());
 
             // get result data from required entity
@@ -44,15 +47,19 @@ public class ReadOnlyRepositoryImpl<T, ID> implements ReadOnlyRepository<T, ID>{
                 for(int i = 0; i < methodList.size(); i++){
                     Class<?> aClass = paramTypes.get(i)[0];
                     if(rs2.getObject(columnList.get(i)) instanceof java.sql.Date){
-                        java.sql.Date sqlDate = rs2.getObject(columnList.get(i), java.sql.Date.class);
-                        methodList.get(i).invoke(t, new java.util.Date(sqlDate.getTime()));
+                        LocalDate localDate = ((java.sql.Date) rs2.getObject(columnList.get(i))).toLocalDate();
+                        methodList.get(i).invoke(t, localDate);
                     } else if(rs2.getObject(columnList.get(i)) instanceof java.sql.Timestamp){
-                        java.sql.Timestamp sqlTimeStamp = rs2.getObject(columnList.get(i), java.sql.Timestamp.class);
-                        methodList.get(i).invoke(t, new java.util.Date(sqlTimeStamp.getTime()));
-                    } else{
-                        methodList.get(i).invoke(t, rs2.getObject(columnList.get(i)));  //, aClass
+                        LocalDateTime localDateTime = ((Timestamp) rs2.getObject(columnList.get(i))).toLocalDateTime();
+                        methodList.get(i).invoke(t, localDateTime);
+                    } else if(rs2.getObject(columnList.get(i)) instanceof Integer){
+                        methodList.get(i).invoke(t, rs2.getInt(columnList.get(i)));
+                    } else if(rs2.getObject(columnList.get(i)) instanceof Double){
+                        methodList.get(i).invoke(t, rs2.getDouble(columnList.get(i)));
                     }
-//                    if(paramTypes.get(i)[0].getName().equals("java.util.Date")){
+                    else{
+                        methodList.get(i).invoke(t, (rs2.getObject(columnList.get(i))));  //, aClass
+                    }
                 }
                 result.add(t);
             }
@@ -66,10 +73,8 @@ public class ReadOnlyRepositoryImpl<T, ID> implements ReadOnlyRepository<T, ID>{
 
     public T findById(Class<T> tClass, ID id, Connection connection) {
         String tableName = getTableName(tClass.getSimpleName());
-        String queryResult = "SELECT * FROM ".concat(tableName).concat(" WHERE id = ?");
-        String queryColumn = "SELECT * FROM get_columns('".concat(tableName).concat("')");
-        System.out.println("queryResult: ".concat(queryResult));
-        System.out.println("queryColumn: ".concat(queryColumn));
+        String queryResult = "SELECT * FROM ".concat(tableName.toLowerCase()).concat(" WHERE id = ?");
+        String queryColumn = "SELECT * FROM get_columns('".concat(tableName.toLowerCase()).concat("')");
 
         List<T> result = new ArrayList<>();
         List<String> columnList = new ArrayList<>();
@@ -86,13 +91,10 @@ public class ReadOnlyRepositoryImpl<T, ID> implements ReadOnlyRepository<T, ID>{
                 columnList.add(rs.getString(1));
             }
 
-            // sort this shit
             columnList.sort(Comparator.naturalOrder());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(methodList.toString());
-        System.out.println(columnList.toString());
 
         try (PreparedStatement statement = connection.prepareStatement(queryResult)) {
             statement.setInt(1, (Integer) id);
@@ -109,12 +111,12 @@ public class ReadOnlyRepositoryImpl<T, ID> implements ReadOnlyRepository<T, ID>{
                 Class<?> aClass = null;
                 for (int i = 0; i < methodList.size(); i++) {
                     aClass = paramTypes.get(i)[0];
-                    if (paramTypes.get(i)[0].getName().equals("java.util.Date")) {
-                        java.sql.Date sqlDate = (Date) rs2.getObject(columnList.get(i), java.sql.Date.class);
-                        methodList.get(i).invoke(t, new java.util.Date(sqlDate.getTime()));
-                    } else {
+                    if(aClass.getSimpleName().equals("boolean")){
+                        methodList.get(i).invoke(t, rs2.getBoolean(columnList.get(i)));
+                    } else{
                         methodList.get(i).invoke(t, rs2.getObject(columnList.get(i), aClass));
                     }
+//                    }
                 }
             }
         } catch (SQLException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
@@ -125,7 +127,7 @@ public class ReadOnlyRepositoryImpl<T, ID> implements ReadOnlyRepository<T, ID>{
     }
 
     public String getTableName(String className){
-        StringBuilder tableName = new StringBuilder(className.toLowerCase());
+        StringBuilder tableName = new StringBuilder(className);
         for(int i = 0; i < tableName.length(); i++){
             if(Character.isUpperCase(tableName.charAt(i)) && i != 0){
                 tableName.insert(i, "_");

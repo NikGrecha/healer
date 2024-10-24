@@ -1,0 +1,244 @@
+<!-- Создает прием (Фиксирует жалобы, прводит осмотр, ставит дитагноз);
+     Назначает препараты;
+     Выписывает направление на анализы;
+     Выписывает направление на процедуры; -->
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Style/doctorStyle.css">
+    <title>Doctor</title>
+</head>
+<body>
+    
+    <p align="center">Прегляд Картки Пацієнта</p>
+
+    <br>
+
+<!--Данные карты пациента-->
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Second_Name</th>
+            <th>First_Name</th>
+            <th>Third_Name</th>
+            <th>Birthday</th>
+            <th>Mobile</th>
+            <th>Allergy</th>
+        </tr>
+        <tr th:each = "el : ${card}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.secondName}"></td>
+            <td th:text="${el.firstName}"></td>
+            <td th:text="${el.thirdName}"></td>
+            <td th:text="${el.birthday}"></td>
+            <td th:text="${el.mobile}"></td>
+            <td th:text="${el.allergy}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+<!--Кнопка и поле для поиска пациента-->
+    <form action="/doctorMain" method="get">
+        <div align="center">
+            <p>Прегляд Картки та данних Пацієнта</p>
+            <input type="text" name="mobile" placeholder="Тел.">
+        </div>
+
+        <br>
+        <div class="log-form-conteiner" align="center">
+            <button type="submit" class="log-button">Переглянути картку</button>
+        </div>
+    </form>
+
+    <br>
+
+<!--Таблица с данными посещений врачей-->
+    <p align="center">Таблица с данными посещений врачей выбраным пациентом</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Doctor</th>
+            <th>Card_Id</th>
+            <th>Complaint</th>
+            <th>Checkup</th>
+            <th>Diagnosis</th>
+            <th >Date</th>
+        </tr>
+        <tr th:each = "el : ${visitList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.doctorName}"></td>
+            <td th:text="${el.cardId}"></td>
+            <td th:text="${el.complaint}"></td>
+            <td th:text="${el.checkup}"></td>
+            <td th:text="${el.diagnosis}"></td>
+            <td th:text="${#temporals.format(el.date, 'dd-MM-yyyy HH:mm')}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--Таблиця для пергляду призначених ліків-->
+    <p align="center">Таблиця для пергляду призначених ліків</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Visit_Id</th>
+            <th>Drug_Name</th>
+            <th>Length</th>
+            <th>Frequency</th>
+            <th>Dop_Info</th>
+        </tr>
+        <tr th:each = "el : ${recipeList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.visitId}"></td>
+            <td th:text="${el.drugName}"></td>
+            <td th:text="${el.length}"></td>
+            <td th:text="${el.frequency}"></td>
+            <td th:text="${el.dopInfo}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--Таблиця для пергляду призначених аналізів-->
+    <p align="center">Таблиця для пергляду призначених аналізів</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Visit_Id</th>
+            <th>Analysis_Type</th>
+            <th>Dop_Info</th>
+            <th>Worker_Id</th>
+            <th>Date_Of_Taking</th>
+            <th>Status</th>
+            <th>Result</th>
+        </tr>
+        <tr th:each = "el : ${goLList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.visitId}"></td>
+            <td th:text="${el.analysisType}"></td>
+            <td th:text="${el.dopInfo}"></td>
+            <td th:text="${el.workerId}"></td>
+            <td th:text="${el.dateOfTaking}"></td>
+            <td th:text="${el.status}"></td>
+            <td>
+                <form th:action="'/doctorMain/getResult/' + ${el.result}" method="get" th:if="${el.result} != 'Пусто'">
+                    <input type="submit" value="Download result">
+                </form>
+                <span th:unless="${el.result} != 'Пусто'">Пусто</span>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--Таблиця для пергляду призначених процедур-->
+    <p align="center">Таблиця для пергляду призначених процедур</p>
+    <table border="1" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Visit_Id</th>
+            <th>Procedure_Type</th>
+            <th>Dop_Info</th>
+            <th>Visit_Left</th>
+        </tr>
+        <tr th:each = "el : ${goPList}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.visitId}"></td>
+            <td th:text="${el.procedureType}"></td>
+            <td th:text="${el.dopInfo}"></td>
+            <td th:text="${el.visitLeft}"></td>
+        </tr>
+    </table>
+
+    <br>
+    <div th:if = "${card}">
+        <!--Форма для додавання візиту-->
+        <form th:action="'doctorMain/addVisit/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання візиту</p>
+                <input type="text" name="complaint" placeholder="Скарга">
+                <input type="text" name="checkup" placeholder="Огляд">
+                <input type="text" name="diagnosis" placeholder="Діагноз">
+            </div>
+
+            <br>
+
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Додати візит</button>
+            </div>
+        </form>
+
+        <br>
+
+        <!--Форма для призначення ліків-->
+        <form th:action="'doctorMain/addRecipe/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання рецепту</p>
+                <input type="text" name="drugName" placeholder="Назва">
+                <input type="text" name="length" placeholder="Довжина вживання (днів)">
+                <input type="text" name="frequency" placeholder="Частота вживання">
+                <input type="text" name="dopInfo" placeholder="Додаткова інформ">
+            </div>
+
+            <br>
+
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Призначити ліки</button>
+            </div>
+        </form>
+
+        <br>
+
+        <!--Форма для призначення аналізів-->
+        <form th:action="'doctorMain/addGoL/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання аналізу</p>
+                <input type="text" name="analysisType" placeholder="Тип аналізу">
+                <input type="text" name="dopInfo" placeholder="Додаткова інформ">
+            </div>
+
+            <br>
+
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Призначити аналіз</button>
+            </div>
+        </form>
+
+        <br>
+
+        <!--Форма для призначення процедур-->
+        <form th:action="'doctorMain/addGoP/'+${card.id}" method="post">
+            <div align="center">
+                <p>Додавання процедури</p>
+                <input type="text" name="procedureType" placeholder="Тип процедури">
+                <input type="text" name="dopInfo" placeholder="Додаткова інформ">
+                <input type="text" name="visitLeft" placeholder="Відвідувань лишилося">
+            </div>
+
+            <br>
+
+            <div class="log-form-conteiner" align="center">
+                <button type="submit" class="log-button">Призначити процедуру</button>
+            </div>
+        </form>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+<!--Кнопка Logout-->
+    <div class="log-form-conteiner" align="center">
+        <form action="/logout">
+            <button type="submit" class="log-button">Вийти</button>
+        </form>
+    </div>
+</body>
+
+</html>

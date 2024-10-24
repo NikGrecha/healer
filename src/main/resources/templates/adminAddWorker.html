@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/Style/adminAddWorker.css"/>
+    <link rel="stylesheet" type="text/css" href="/Style/style.css"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="log-form-conteiner">
+  <form action="/logout">
+    <button type="submit" class="exit">Вийти</button>
+  </form>
+</div>
+<div class="log-form-conteiner">
+  <form action="/adminMain">
+    <button type="submit" class="goBack">Назад</button>
+  </form>
+</div>
+
+<form action="adminMain/addWorker" method="post">
+  <div>
+    <input class="input" type="text" name="second_name" placeholder="Прізвище">
+    <input class="input1" type="text" name="first_name" placeholder="Ім'я">
+    <input class="input2" type="text" name="third_name" placeholder="Побатькові">
+    <input class="input3" type="date" name="birthday" placeholder="">
+    <input class="input4" type="text" name="mobile" placeholder="Тел.">
+    <input class="input5" type="text" name="department" placeholder="Департамент">
+    <input class="input6" type="text" name="speciality" placeholder="Спеціальність">
+    <input class="input7" type="text" name="login" value="" placeholder="Логін">
+    <input class="input8" type="text" name="password" placeholder="Пароль">
+  </div>
+
+  <br>
+
+  <div class="log-form-conteiner" align="center">
+    <button type="submit" class="button3">Додати співробітника</button>
+  </div>
+</form>
+
+</body>
+</html>

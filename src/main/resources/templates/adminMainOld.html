@@ -1,0 +1,80 @@
+<!-- Создает Пацциента
+     Создает Работников (док; лаб; физио;)
+     Лишает/Востанавливает доступ работника к его уч.зап.;
+     -->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Style/adminStyle.css">
+    <title>Admin</title>
+</head>
+
+<body>
+
+    <form action="adminMain/addPatient" method="post">
+        <div align="center">
+            <p>Додавання пацієнта</p>
+            <input type="text" name="secondName" placeholder="Прізвище">
+            <input type="text" name="firstName" placeholder="Ім'я">
+            <input type="text" name="thirdName" placeholder="По батькові">
+            <input type="date" name="birthday" placeholder="День народження">
+            <input type="text" name="mobile" placeholder="Номер телефону">
+            <input type="text" name="allergy" placeholder="Алергії">
+            <input type="password" name="password" placeholder="Пароль">
+        </div>
+
+        <br>
+        <div class="log-form-conteiner" align="center">
+            <button type="submit" class="log-button">Додати пацієнта</button>
+        </div>
+    </form>
+
+    <br><br>
+
+    <form action="adminMain/addWorker" method="post">
+        <div align="center">
+            <p>Додавання співробітника</p>
+            <input type="text" name="second_name" placeholder="Прізвище">
+            <input type="text" name="first_name" placeholder="Ім'я">
+            <input type="text" name="third_name" placeholder="Побатькові">
+            <input type="date" name="birthday" placeholder="">
+            <input type="text" name="mobile" placeholder="Тел.">
+            <input type="text" name="department" placeholder="Департамент">
+            <input type="text" name="speciality" placeholder="Спеціальність">
+            <input type="text" name="login" value="" placeholder="Логін">
+            <input type="text" name="password" placeholder="Пароль">
+        </div>
+
+        <br>
+
+        <div class="log-form-conteiner" align="center">
+            <button type="submit" class="log-button">Додати співробітника</button>
+        </div>
+    </form>
+
+
+    <br><br>
+
+    <br>
+    <div class="log-form-conteiner" align="center">
+        <p>Зміна паролю співробітника</p>
+        <form action="/adminMain/changeUserPassword" method="post">
+            <input type="text" name="mobile">
+            <input type="text" name="newPassword">
+            <br><br>
+            <button type="submit" class="log-button">Звільнити співробітника</button>
+        </form>
+    </div>
+    <br><br>
+
+    <div class="log-form-conteiner" align="center">
+        <form action="/logout">
+            <button type="submit" class="log-button">Вийти</button>
+        </form>
+    </div>
+</body>
+
+</html>

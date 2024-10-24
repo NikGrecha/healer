@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Style/globalStyle.css">
+    <link rel="stylesheet" type="text/css" href="/Style/labStyleCustom.css">
+    <title>Lab Upload</title>
+</head>
+<body>
+    <div class="log-form-conteiner">
+        <form action="/logout">
+          <button type="submit" class="exit">Вийти</button>
+        </form>
+    </div>
+      
+    <div class="log-form-conteiner">
+        <form action="/labMain">
+          <button type="submit" class="goBack">Назад</button>
+        </form>
+    </div>
+
+    <div class="go-form-conteiner" align="center">
+        <form action="/labMain" method="post">
+            <input placeholder=" Номер направлення" class="labUploadGoId" type="text" name="id">
+            <button type="submit" class="labUploadFindGo" >Завантажити результат</button>
+        </form>
+    </div>
+
+<!--    <div class="go-form-conteiner">-->
+<!--        <form action="/labMain">-->
+<!--          <button type="submit" class="review">Огляд</button>-->
+<!--        </form>-->
+<!--    </div>-->
+
+    <div class="go-form-conteiner">
+        <form action="" method="post" enctype="multipart/form-data">
+            <input placeholder=" Оберіть файл" class="labUploadFile" type="file" name="file">
+        </form>
+    </div>
+    
+</body>
+</html>

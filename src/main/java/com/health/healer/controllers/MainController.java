@@ -14,33 +14,33 @@ public class MainController {
         return "guestMain";
     }
 
-    @GetMapping("/doctorMain")
-    public String loginDoctor(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "doctorMain";
-    }
+//    @GetMapping("/doctorMain")
+//    public String loginDoctor(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "doctorMain";
+//    }
 
-    @GetMapping("/laboratoryMain")
-    public String loginLaboratory(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "laboratoryMain";
-    }
+//    @GetMapping("/labMain")
+//    public String loginLaboratory(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "labMain";
+//    }
 
-    @GetMapping("/physioMain")
-    public String loginPhysio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "physioMain";
-    }
+//    @GetMapping("/physioMain")
+//    public String loginPhysio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "physioMain";
+//    }
 
-    @GetMapping("/adminMain")
-    public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "adminMain";
-    }
+//    @GetMapping("/adminMain")
+//    public String loginAdmin(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "adminMain";
+//    }
 
-    @GetMapping("/userMain")
-    public String loginUser(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "userMain";
-    }
+//    @GetMapping("/userMain")
+//    public String loginUser(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "userMain";
+//    }
 }
